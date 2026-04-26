@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UOL Esporte | Cobertura Especial 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde:      #004d2c;
+      --verde-claro: #00923f;
+      --ouro:       #FCBD02;
+      --ouro-claro: #ffe45e;
+      --azul:       #002B7F;
+      --branco:     #F5F5F0;
+      --cinza-escuro: #080a08;
+      --radius: 12px;
+      --fonte-display: 'Bebas Neue', sans-serif;
+      --fonte-corpo:    'Barlow', sans-serif;
+      --fonte-cond:    'Barlow Condensed', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--fonte-corpo);
+      background-color: var(--cinza-escuro);
+      color: var(--branco);
+      line-height: 1.5;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* HEADER */
+    .top-bar { background: #000; padding: 12px 0; border-bottom: 1px solid #222; }
+    .top-bar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: var(--fonte-display); font-size: 32px; color: #fff; text-decoration: none; letter-spacing: 2px; }
+    .logo span { color: var(--ouro); }
+
+    nav { background: var(--verde); border-bottom: 4px solid var(--ouro); position: sticky; top: 0; z-index: 1000; }
+    .nav-inner { display: flex; overflow-x: auto; scrollbar-width: none; }
+    .nav-inner a { padding: 15px 22px; color: #fff; text-decoration: none; font-family: var(--fonte-cond); font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .nav-inner a:hover { background: rgba(0,0,0,0.2); color: var(--ouro); }
+
+    /* TICKER */
+    .ticker-bar { background: var(--ouro); color: #000; padding: 8px 0; overflow: hidden; font-weight: 700; font-size: 13px; }
+    .ticker-text { white-space: nowrap; display: inline-block; animation: slide 25s linear infinite; }
+    @keyframes slide { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+
+    /* GRID PRINCIPAL */
+    .hero-grid { display: grid; grid-template-columns: 1fr 380px; gap: 20px; margin: 30px 0; }
+
+    .card { position: relative; border-radius: var(--radius); overflow: hidden; background: #111; transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); }
+
+    .img-wrap { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .card:hover .img-wrap img { scale: 1.05; }
+    .img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.9) 10%, transparent 60%); }
+
+    /* CONTEÚDO CARDS */
+    .card-hero { height: 520px; }
+    .card-hero .info { position: absolute; bottom: 0; padding: 35px; z-index: 2; }
+    .tag { background: var(--ouro); color: #000; padding: 4px 10px; border-radius: 4px; font-weight: 800; font-size: 11px; font-family: var(--fonte-cond); }
+    h1 { font-family: var(--fonte-display); font-size: 48px; line-height: 0.95; margin: 15px 0; text-transform: uppercase; }
+
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .card-side { display: grid; grid-template-columns: 120px 1fr; gap: 15px; padding: 10px; background: #1a1a1a; }
+    .card-side h3 { font-size: 16px; font-family: var(--fonte-cond); line-height: 1.2; }
+
+    /* GRID INFERIOR */
+    .bottom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 50px; }
+    .card-mini h4 { padding: 15px; font-size: 18px; font-family: var(--fonte-cond); }
+
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } h1 { font-size: 36px; } }
+  </style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="container top-bar-inner">
+    <a href="#" class="logo">UOL <span>ESPORTE</span></a>
+    <button style="background:var(--ouro); border:none; padding:8px 20px; border-radius:4px; font-weight:700; cursor:pointer;">ASSINE</button>
+  </div>
+</header>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#">FUTEBOL</a>
+    <a href="#">COPA 2026</a>
+    <a href="#">BRASILEIRÃO</a>
+    <a href="#">LIBERTADORES</a>
+    <a href="#">NBA</a>
+    <a href="#">F1</a>
+  </div>
+</nav>
+
+<div class="ticker-bar">
+  <div class="ticker-text">
+    🔥 50 DIAS PARA A COPA: FIFA anuncia que 95% dos ingressos já foram vendidos | 🏀 NBA: Antetokounmpo brilha e Bucks empatam série contra o Celtics | 🏎️ F1: GP de Miami terá novo asfalto e recorde de velocidade neste domingo
+  </div>
+</div>
+
+<main class="container">
+  <div class="hero-grid">
+    <article class="card card-hero">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80" alt="Treino da Seleção">
+      </div>
+      <div class="info">
+        <span class="tag">RUMO AO HEXA</span>
+        <h1>Lista Final: Dorival Jr. revela os 26 convocados para a Copa 2026 nesta segunda</h1>
+        <p style="opacity: 0.8;">Endrick e Estêvão lideram nova geração; saiba quais são as principais dúvidas no meio-campo.</p>
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <article class="card card-side">
+        <div class="img-wrap" style="height: 100px; border-radius: 8px;">
+          <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&w=300&q=80" alt="Mercado">
+        </div>
+        <div>
+          <span class="tag" style="font-size: 9px;">MERCADO</span>
+          <h3>Palmeiras abre negociação para repatriar Gabriel Jesus em julho.</h3>
+        </div>
+      </article>
+
+      <article class="card card-side">
+        <div class="img-wrap" style="height: 100px; border-radius: 8px;">
+          <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=300&q=80" alt="Libertadores">
+        </div>
+        <div>
+          <span class="tag" style="font-size: 9px; background: var(--azul); color:#fff;">LIBERTADORES</span>
+          <h3>Flamengo e River Plate duelam pela liderança do Grupo G.</h3>
+        </div>
+      </article>
+
+      <article class="card card-side">
+        <div class="img-wrap" style="height: 100px; border-radius: 8px;">
+          <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=300&q=80" alt="NBA">
+        </div>
+        <div>
+          <span class="tag" style="font-size: 9px; background: #e03a3e; color:#fff;">NBA</span>
+          <h3>Warriors perdem Curry por lesão no Jogo 4 dos Playoffs.</h3>
+        </div>
+      </article>
+    </aside>
+  </div>
+
+  <h2 style="font-family: var(--fonte-display); color: var(--ouro); margin-bottom: 20px; font-size: 28px;">MAIS NOTÍCIAS</h2>
+
+  <section class="bottom-grid">
+    <article class="card card-mini">
+      <div class="img-wrap" style="aspect-ratio: 16/9; height: auto;">
+        <img src="https://images.unsplash.com/photo-1599474924187-334a4ae5bd3c?auto=format&fit=crop&w=500&q=80" alt="Tênis">
+      </div>
+      <div class="info-mini">
+        <span class="tag" style="margin-left: 15px;">TÊNIS</span>
+        <h4>Alcaraz vence em Madrid e retoma topo do ranking mundial.</h4>
+      </div>
+    </article>
+
+    <article class="card card-mini">
+      <div class="img-wrap" style="aspect-ratio: 16/9; height: auto;">
+        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=500&q=80" alt="F1">
+      </div>
+      <div class="info-mini">
+        <span class="tag" style="margin-left: 15px; background: #ff1801; color: #fff;">F1</span>
+        <h4>Ferrari surpreende e crava dobradinha na classificação em Miami.</h4>
+      </div>
+    </article>
+
+    <article class="card card-mini">
+      <div class="img-wrap" style="aspect-ratio: 16/9; height: auto;">
+        <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=500&q=80" alt="Vôlei">
+      </div>
+      <div class="info-mini">
+        <span class="tag" style="margin-left: 15px; background: var(--verde-claro); color:#fff;">VÔLEI</span>
+        <h4>Superliga: Minas e Praia Clube decidem o título hoje em Uberlândia.</h4>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer style="padding: 50px 0; border-top: 1px solid #222; text-align: center; opacity: 0.6; font-size: 14px;">
+  <p>© 2026 UOL ESPORTE - Abril de 2026</p>
+</footer>
+
+</body>
+</html>
