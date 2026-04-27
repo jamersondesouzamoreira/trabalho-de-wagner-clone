@@ -1,18 +1,69 @@
-/* Estilo para resetar as cores para o padrão original */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    background-color: #ffffff; /* Branco */
-    color: #000000;            /* Preto */
-    font-family: sans-serif;   /* Fonte padrão limpa */
-    margin: 0;
-    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
 }
 
-h1, h2 {
-    color: #000000;
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5%;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Caso queira remover cores de links também */
-a {
-    color: #0000ee; /* Azul padrão de links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #0047bb, #00a859); /* Cores da Seleção */
+    color: white;
+}
+
+/* Container de Serviços */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 50px 10%;
+    margin-top: -30px; /* Sobrepõe levemente o hero */
+}
+
+/* Cards de Serviço */
+.service-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    color: #0047bb;
 }
