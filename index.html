@@ -1,80 +1,56 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W-Clone Esporte | Portal Atualizado</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="logo">W-CLONE <span>ESPORTE</span></div>
-        <ul class="nav-links">
-            <li><a href="#jogos">Jogos</a></li>
-            <li><a href="#noticias">Notícias</a></li>
-            <li><a href="#tabela">Tabela</a></li>
-            <li><a href="#selecao">Seleção</a></li>
-        </ul>
-    </nav>
-
-    <div class="ticker">
-        <span class="ticker-label">URGENTE</span>
-        <div class="ticker-track">
-            <span>🚨 Éder Militão passa por cirurgia e está fora da Copa 2026. &nbsp;&nbsp; | &nbsp;&nbsp; 🏆 Cruzeiro enfrenta o Boca Juniors hoje às 21h30 no Mineirão. &nbsp;&nbsp; | &nbsp;&nbsp; ⚽ Palmeiras segue líder isolado do Brasileirão.</span>
-        </div>
-    </div>
-
-    <header class="hero">
-        <div class="hero-content">
-            <div class="hero-tag">Rumo ao Hexa</div>
-            <h1>O CAMINHO PARA A GLÓRIA</h1>
-            <p>Carlo Ancelotti define os últimos detalhes para a convocação oficial da Seleção Brasileira no dia 18 de maio.</p>
-            <a href="#" class="hero-btn">VER PLANEJAMENTO →</a>
-        </div>
-        <div class="hero-img-wrap">
-            <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=800&q=80" alt="Estádio">
-        </div>
-    </header>
-
-    <main class="container-pagina">
-        <section id="jogos">
-            <h2 class="section-title">Jogos de Hoje</h2>
-            <div class="jogos-grid">
-                <div class="jogo-card destaque">
-                    <div class="jogo-competicao">Libertadores</div>
-                    <div class="jogo-times">
-                        <div class="time">Cruzeiro</div>
-                        <div class="jogo-hora">21:30</div>
-                        <div class="time">Boca Juniors</div>
+<main class="container-pagina">
+    <div class="layout-esportivo">
+        
+        <div class="coluna-principal">
+            <section id="jogos">
+                <h2 class="section-title">Destaques da Rodada</h2>
+                <div class="jogos-grid">
+                    <div class="jogo-card destaque">
+                        <div class="jogo-competicao">Libertadores</div>
+                        <div class="jogo-times">
+                            <div class="time">Cruzeiro</div>
+                            <div class="jogo-hora">21:30</div>
+                            <div class="time">Boca Juniors</div>
+                        </div>
                     </div>
-                    <div class="jogo-onde">Mineirão</div>
                 </div>
-                </div>
-        </section>
+            </section>
 
-        <section id="noticias">
-            <h2 class="section-title">Últimas Notícias</h2>
-            <div class="noticias-grid">
+            <section id="noticias" style="margin-top: 40px;">
+                <h2 class="section-title">Principais Notícias</h2>
                 <article class="noticia-card grande">
                     <div class="noticia-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80" alt="Notícia">
-                        <span class="noticia-tag">Seleção</span>
+                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800" alt="Notícia">
                     </div>
                     <div class="noticia-body">
-                        <h3>Drama no Real Madrid: Militão fora da Copa</h3>
-                        <p>A lesão ligamentar confirmada nesta manhã retira um dos pilares da defesa de Ancelotti.</p>
-                        <span class="noticia-data">28 Abr 2026</span>
+                        <h3>Ancelotti testa nova formação sem Militão</h3>
+                        <p>Treinador busca alternativas na zaga para o amistoso contra Marrocos.</p>
                     </div>
                 </article>
+            </section>
+        </div>
+
+        <aside class="sidebar-lateral">
+            <h3 class="sidebar-title">MAIS LIDAS</h3>
+            <div class="lista-rapidas">
+                <div class="item-rapido">
+                    <span class="ranking">1</span>
+                    <p>Neymar treina com bola e anima torcida para a Copa.</p>
+                </div>
+                <div class="item-rapido">
+                    <span class="ranking">2</span>
+                    <p>CBF define premiação histórica para o Brasileirão 2026.</p>
+                </div>
+                <div class="item-rapido">
+                    <span class="ranking">3</span>
+                    <p>Mercado: Flamengo sonda lateral da Premier League.</p>
+                </div>
+                <div class="item-rapido">
+                    <span class="ranking">4</span>
+                    <p>Vini Jr. concorre ao prêmio de melhor do mês na Espanha.</p>
+                </div>
             </div>
-        </section>
-    </main>
+        </aside>
 
-    <footer class="footer">
-        <p>&copy; 2026 W-Clone Esporte - Todos os direitos reservados.</p>
-    </footer>
-
-</body>
-</html>
+    </div>
+</main>

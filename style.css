@@ -1,213 +1,104 @@
 /* ===========================
-   Reset & Base
+   EFEITOS NO MENU (NAVBAR)
 =========================== */
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --verde:    #009c3b;
-    --amarelo:  #FFDF00;
-    --azul:     #002776;
-    --vermelho: #e63012;
-    --escuro:   #111111;
-    --cinza:    #f2f2f2;
-    --texto:    #1a1a1a;
-    --branco:   #ffffff;
-}
-
-body {
-    font-family: 'Barlow', sans-serif;
-    background-color: var(--cinza);
-    color: var(--texto);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* ===========================
-   NAVBAR
-=========================== */
-.navbar {
-    background-color: var(--escuro);
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5%;
-    position: sticky;
-    top: 0;
-    z-index: 200;
-    animation: slideDown 0.5s ease both;
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-100%); opacity: 0; }
-    to   { transform: translateY(0); opacity: 1; }
-}
-
-.logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    color: var(--branco);
-}
-
-.logo span { color: var(--verde); }
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 28px;
-}
-
 .nav-links a {
+    position: relative; /* Necessário para o efeito da linha */
     text-decoration: none;
     color: #ccc;
     font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover { color: var(--branco); }
-
-/* ===========================
-   TICKER (Corrigido)
-=========================== */
-.ticker {
-    background: var(--verde);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    height: 36px;
-    overflow: hidden;
-}
-
-.ticker-label {
-    background: var(--vermelho);
-    padding: 0 14px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    z-index: 10;
-}
-
-.ticker-track {
-    white-space: nowrap;
-    display: flex;
-}
-
-.ticker-track span {
-    display: inline-block;
-    padding-left: 100%;
-    animation: ticker 30s linear infinite;
-    font-weight: 600;
-}
-
-@keyframes ticker {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-100%); }
-}
-
-/* ===========================
-   HERO
-=========================== */
-.hero {
-    background: linear-gradient(135deg, var(--azul) 0%, #001a4d 100%);
-    display: flex;
-    align-items: center;
-    padding: 60px 5%;
-    gap: 40px;
-    color: white;
-}
-
-.hero-tag {
-    background: var(--vermelho);
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 10px;
-    display: inline-block;
+    transition: color 0.3s ease;
+    padding: 8px 0;
 }
 
-.hero h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    color: var(--amarelo);
-    margin-bottom: 15px;
+.nav-links a:hover {
+    color: var(--amarelo); /* Cor de destaque ao passar o mouse */
 }
 
-.hero-btn {
-    background: var(--verde);
-    color: white;
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 700;
-    display: inline-block;
-    transition: 0.3s;
+/* Linha que surge embaixo do menu */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--amarelo);
+    transition: width 0.3s ease;
 }
 
-.hero-btn:hover { background: #007a2f; }
-
-.hero-img-wrap img {
+.nav-links a:hover::after {
     width: 100%;
-    max-width: 500px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 /* ===========================
-   CONTAINER & GRID
+   LAYOUT DE COLUNAS (SIDEBAR)
 =========================== */
-.container-pagina {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    border-left: 5px solid var(--verde);
-    padding-left: 15px;
-    margin-bottom: 30px;
-}
-
-.jogos-grid {
+.layout-esportivo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr 320px; /* Principal e Lateral fixo */
+    gap: 30px;
 }
 
-.jogo-card {
+.sidebar-lateral {
     background: white;
+    border-radius: 8px;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    height: fit-content;
 }
 
-.jogo-card.destaque {
-    background: var(--azul);
-    color: white;
-    border-top: 4px solid var(--amarelo);
+.sidebar-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--azul);
+    border-bottom: 2px solid var(--azul);
+    margin-bottom: 20px;
+    padding-bottom: 5px;
 }
 
-.footer {
-    background: var(--escuro);
-    color: #888;
-    text-align: center;
-    padding: 30px;
-    margin-top: 50px;
+.lista-rapidas .item-rapido {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-    .hero { flex-direction: column; text-align: center; }
-    .nav-links { display: none; }
+.item-rapido:hover p {
+    color: var(--azul);
+    text-decoration: underline;
+}
+
+.ranking {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: #ddd;
+    line-height: 1;
+}
+
+.item-rapido p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 992px) {
+    .layout-esportivo {
+        grid-template-columns: 1fr; /* Coluna única no celular */
+    }
+    .sidebar-lateral {
+        margin-top: 40px;
+    }
+}
+
+/* Efeito de zoom suave em todas as imagens (padrão UOL) */
+.noticia-img-wrap img {
+    transition: transform 0.5s ease;
+}
+
+.noticia-card:hover img {
+    transform: scale(1.05);
 }
