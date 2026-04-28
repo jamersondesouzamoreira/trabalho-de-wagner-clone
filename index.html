@@ -1,11 +1,181 @@
+html
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabalho de Wagner - Ajustado</title>
-    <!-- Link que conecta ao CSS separado -->
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --verde: #009c3b;
+            --amarelo: #FFDF00;
+            --azul: #002776;
+            --branco: #f5f5f5;
+            --escuro: #0a0a0a;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--escuro);
+            color: var(--branco);
+            min-height: 100vh;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+            height: 70px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--verde);
+            animation: slideDown 0.6s ease forwards;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        /* Logo */
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.9rem;
+            letter-spacing: 3px;
+            color: var(--amarelo);
+            text-shadow: 0 0 14px rgba(255, 223, 0, 0.5);
+            cursor: default;
+            transition: text-shadow 0.3s;
+        }
+
+        .logo:hover {
+            text-shadow: 0 0 28px rgba(255, 223, 0, 0.9);
+        }
+
+        /* Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links li {
+            opacity: 0;
+            animation: fadeInItem 0.5s ease forwards;
+        }
+
+        .nav-links li:nth-child(1) { animation-delay: 0.2s; }
+        .nav-links li:nth-child(2) { animation-delay: 0.35s; }
+        .nav-links li:nth-child(3) { animation-delay: 0.5s; }
+
+        @keyframes fadeInItem {
+            from { opacity: 0; transform: translateY(-8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-links a {
+            position: relative;
+            font-family: 'Barlow', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--branco);
+            text-decoration: none;
+            padding: 4px 0;
+            transition: color 0.3s;
+        }
+
+        /* Linha animada embaixo do link */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--amarelo);
+            border-radius: 2px;
+            transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--amarelo);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Glow no hover */
+        .nav-links a:hover {
+            text-shadow: 0 0 10px rgba(255, 223, 0, 0.6);
+        }
+
+        /* ===== HERO ===== */
+        .container-pagina {
+            padding: 4rem 3rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: radial-gradient(ellipse at center, #003d1a 0%, #0a0a0a 70%);
+            border: 1px solid #1a3a25;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            letter-spacing: 4px;
+            color: var(--amarelo);
+            text-shadow: 0 2px 20px rgba(255, 223, 0, 0.3);
+        }
+
+        .hero p {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            color: #88c4a0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ===== SEÇÃO ===== */
+        .conteudo {
+            background: #111;
+            border: 1px solid #1e1e1e;
+            border-radius: 10px;
+            padding: 2.5rem;
+        }
+
+        .conteudo h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--verde);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .conteudo p {
+            color: #aaa;
+            line-height: 1.7;
+        }
+    </style>
 </head>
 <body>
 
