@@ -1,30 +1,38 @@
+:root {
+    --verde:    #009c3b;
+    --amarelo:  #FFDF00;
+    --azul:     #002776;
+    --escuro:   #111111;
+    --texto:    #333;
+    --cinza-uol: #f4f4f4;
+}
+
 /* ===========================
-   EFEITOS NO MENU (NAVBAR)
+   MENU COM EFEITOS
 =========================== */
 .nav-links a {
-    position: relative; /* Necessário para o efeito da linha */
+    position: relative;
     text-decoration: none;
     color: #ccc;
-    font-size: 13px;
     font-weight: 700;
-    text-transform: uppercase;
+    font-size: 14px;
+    padding: 10px 0;
     transition: color 0.3s ease;
-    padding: 8px 0;
 }
 
 .nav-links a:hover {
-    color: var(--amarelo); /* Cor de destaque ao passar o mouse */
+    color: var(--amarelo);
 }
 
-/* Linha que surge embaixo do menu */
+/* Linha deslizante inferior */
 .nav-links a::after {
     content: '';
     position: absolute;
-    width: 0;
-    height: 3px;
     bottom: 0;
     left: 0;
-    background-color: var(--amarelo);
+    width: 0;
+    height: 3px;
+    background: var(--amarelo);
     transition: width 0.3s ease;
 }
 
@@ -33,72 +41,96 @@
 }
 
 /* ===========================
-   LAYOUT DE COLUNAS (SIDEBAR)
+   LAYOUT DE COLUNAS (UOL STYLE)
 =========================== */
-.layout-esportivo {
+.layout-uol {
     display: grid;
-    grid-template-columns: 1fr 320px; /* Principal e Lateral fixo */
+    grid-template-columns: 1fr 340px; /* Conteúdo | Sidebar */
     gap: 30px;
 }
 
-.sidebar-lateral {
-    background: white;
-    border-radius: 8px;
+.conteudo-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Sidebar Estilizada */
+.sidebar-uol {
+    background: var(--cinza-uol);
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 8px;
     height: fit-content;
 }
 
 .sidebar-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    color: var(--azul);
-    border-bottom: 2px solid var(--azul);
+    font-size: 1.8rem;
+    color: var(--escuro);
+    border-bottom: 4px solid var(--amarelo);
     margin-bottom: 20px;
-    padding-bottom: 5px;
 }
 
-.lista-rapidas .item-rapido {
+.ranking-item {
     display: flex;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    align-items: flex-start;
     cursor: pointer;
-    transition: 0.2s;
 }
 
-.item-rapido:hover p {
-    color: var(--azul);
-    text-decoration: underline;
-}
-
-.ranking {
+.ranking-item .numero {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: #ddd;
+    font-size: 2.5rem;
+    color: #ccc;
     line-height: 1;
 }
 
-.item-rapido p {
-    font-size: 0.9rem;
+.ranking-item p {
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--texto);
+    transition: color 0.2s;
 }
 
-/* Ajuste para telas menores */
-@media (max-width: 992px) {
-    .layout-esportivo {
-        grid-template-columns: 1fr; /* Coluna única no celular */
-    }
-    .sidebar-lateral {
-        margin-top: 40px;
-    }
+.ranking-item:hover p {
+    color: var(--azul);
 }
 
-/* Efeito de zoom suave em todas as imagens (padrão UOL) */
-.noticia-img-wrap img {
-    transition: transform 0.5s ease;
+/* ===========================
+   HERO COM OVERLAY
+=========================== */
+.hero-img-wrap {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 450px;
 }
 
-.noticia-card:hover img {
+.hero-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.hero-img-wrap:hover img {
     transform: scale(1.05);
+}
+
+.hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    color: white;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .layout-uol {
+        grid-template-columns: 1fr;
+    }
 }

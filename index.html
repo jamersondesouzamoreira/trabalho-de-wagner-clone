@@ -1,56 +1,94 @@
-<main class="container-pagina">
-    <div class="layout-esportivo">
-        
-        <div class="coluna-principal">
-            <section id="jogos">
-                <h2 class="section-title">Destaques da Rodada</h2>
-                <div class="jogos-grid">
-                    <div class="jogo-card destaque">
-                        <div class="jogo-competicao">Libertadores</div>
-                        <div class="jogo-times">
-                            <div class="time">Cruzeiro</div>
-                            <div class="jogo-hora">21:30</div>
-                            <div class="time">Boca Juniors</div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W-Clone Esporte | UOL Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">W-CLONE <span>ESPORTE</span></div>
+        <ul class="nav-links">
+            <li><a href="#">Futebol</a></li>
+            <li><a href="#">Libertadores</a></li>
+            <li><a href="#">Brasileirão</a></li>
+            <li><a href="#">Seleção</a></li>
+            <li><a href="#">Vôlei</a></li>
+        </ul>
+    </nav>
+
+    <div class="ticker">
+        <span class="ticker-label">AGORA</span>
+        <div class="ticker-track">
+            <span>🚨 Éder Militão operado com sucesso: recuperação estimada em 9 meses &nbsp;&nbsp; | &nbsp;&nbsp; 🏟️ Mineirão: Cruzeiro x Boca Juniors com recorde de público &nbsp;&nbsp; | &nbsp;&nbsp; ⚽ Palmeiras mantém 6 pontos de vantagem na liderança</span>
+        </div>
+    </div>
+
+    <main class="container-pagina">
+        <div class="layout-uol">
+            
+            <div class="conteudo-principal">
+                <section class="hero-uol">
+                    <div class="hero-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200" alt="Destaque">
+                        <div class="hero-overlay">
+                            <span class="tag">SELEÇÃO BRASILEIRA</span>
+                            <h1>Ancelotti define data para lista final da Copa 2026</h1>
+                            <p>Treinador busca soluções internas após baixa confirmada de Militão na zaga.</p>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section id="noticias" style="margin-top: 40px;">
-                <h2 class="section-title">Principais Notícias</h2>
-                <article class="noticia-card grande">
-                    <div class="noticia-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800" alt="Notícia">
+                <section class="jogos-sessao">
+                    <h2 class="section-title">PLACAR UOL</h2>
+                    <div class="jogos-grid">
+                        <div class="jogo-card destaque">
+                            <div class="jogo-times">
+                                <span>CRU</span> <span class="jogo-hora">21:30</span> <span>BOC</span>
+                            </div>
+                            <div class="jogo-info">Libertadores • Mineirão</div>
+                        </div>
+                        <div class="jogo-card">
+                            <div class="jogo-times">
+                                <span>BOT</span> <span class="jogo-hora">19:00</span> <span>IPT</span>
+                            </div>
+                            <div class="jogo-info">Sul-Americana</div>
+                        </div>
                     </div>
-                    <div class="noticia-body">
-                        <h3>Ancelotti testa nova formação sem Militão</h3>
-                        <p>Treinador busca alternativas na zaga para o amistoso contra Marrocos.</p>
-                    </div>
-                </article>
-            </section>
-        </div>
-
-        <aside class="sidebar-lateral">
-            <h3 class="sidebar-title">MAIS LIDAS</h3>
-            <div class="lista-rapidas">
-                <div class="item-rapido">
-                    <span class="ranking">1</span>
-                    <p>Neymar treina com bola e anima torcida para a Copa.</p>
-                </div>
-                <div class="item-rapido">
-                    <span class="ranking">2</span>
-                    <p>CBF define premiação histórica para o Brasileirão 2026.</p>
-                </div>
-                <div class="item-rapido">
-                    <span class="ranking">3</span>
-                    <p>Mercado: Flamengo sonda lateral da Premier League.</p>
-                </div>
-                <div class="item-rapido">
-                    <span class="ranking">4</span>
-                    <p>Vini Jr. concorre ao prêmio de melhor do mês na Espanha.</p>
-                </div>
+                </section>
             </div>
-        </aside>
 
-    </div>
-</main>
+            <aside class="sidebar-uol">
+                <h3 class="sidebar-title">MAIS LIDAS</h3>
+                <div class="ranking-lista">
+                    <div class="ranking-item">
+                        <span class="numero">1</span>
+                        <p>Neymar volta aos treinos e gera expectativa para estreia na Copa.</p>
+                    </div>
+                    <div class="ranking-item">
+                        <span class="numero">2</span>
+                        <p>Venda de ingressos para Brasil x Marrocos começa amanhã.</p>
+                    </div>
+                    <div class="ranking-item">
+                        <span class="numero">3</span>
+                        <p>Entenda por que o Palmeiras é favorito ao título do Brasileirão.</p>
+                    </div>
+                    <div class="ranking-item">
+                        <span class="numero">4</span>
+                        <p>Mercado: Flamengo monitora situação de meia na Europa.</p>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 W-Clone Esporte - Inspirado no Portal UOL</p>
+    </footer>
+
+</body>
+</html>
