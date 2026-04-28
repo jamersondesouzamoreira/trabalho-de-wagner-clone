@@ -1,203 +1,167 @@
-html
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trabalho de Wagner - Ajustado</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --verde: #009c3b;
-            --amarelo: #FFDF00;
-            --azul: #002776;
-            --branco: #f5f5f5;
-            --escuro: #0a0a0a;
-        }
-
-        body {
-            font-family: 'Barlow', sans-serif;
-            background: var(--escuro);
-            color: var(--branco);
-            min-height: 100vh;
-        }
-
-        /* ===== NAVBAR ===== */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 3rem;
-            height: 70px;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 2px solid var(--verde);
-            animation: slideDown 0.6s ease forwards;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to   { transform: translateY(0);    opacity: 1; }
-        }
-
-        /* Logo */
-        .logo {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.9rem;
-            letter-spacing: 3px;
-            color: var(--amarelo);
-            text-shadow: 0 0 14px rgba(255, 223, 0, 0.5);
-            cursor: default;
-            transition: text-shadow 0.3s;
-        }
-
-        .logo:hover {
-            text-shadow: 0 0 28px rgba(255, 223, 0, 0.9);
-        }
-
-        /* Links */
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .nav-links li {
-            opacity: 0;
-            animation: fadeInItem 0.5s ease forwards;
-        }
-
-        .nav-links li:nth-child(1) { animation-delay: 0.2s; }
-        .nav-links li:nth-child(2) { animation-delay: 0.35s; }
-        .nav-links li:nth-child(3) { animation-delay: 0.5s; }
-
-        @keyframes fadeInItem {
-            from { opacity: 0; transform: translateY(-8px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .nav-links a {
-            position: relative;
-            font-family: 'Barlow', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--branco);
-            text-decoration: none;
-            padding: 4px 0;
-            transition: color 0.3s;
-        }
-
-        /* Linha animada embaixo do link */
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--amarelo);
-            border-radius: 2px;
-            transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-links a:hover {
-            color: var(--amarelo);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Glow no hover */
-        .nav-links a:hover {
-            text-shadow: 0 0 10px rgba(255, 223, 0, 0.6);
-        }
-
-        /* ===== HERO ===== */
-        .container-pagina {
-            padding: 4rem 3rem;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 5rem 2rem;
-            background: radial-gradient(ellipse at center, #003d1a 0%, #0a0a0a 70%);
-            border: 1px solid #1a3a25;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-        }
-
-        .hero h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem;
-            letter-spacing: 4px;
-            color: var(--amarelo);
-            text-shadow: 0 2px 20px rgba(255, 223, 0, 0.3);
-        }
-
-        .hero p {
-            margin-top: 1rem;
-            font-size: 1.1rem;
-            color: #88c4a0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* ===== SEÇÃO ===== */
-        .conteudo {
-            background: #111;
-            border: 1px solid #1e1e1e;
-            border-radius: 10px;
-            padding: 2.5rem;
-        }
-
-        .conteudo h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--verde);
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .conteudo p {
-            color: #aaa;
-            line-height: 1.7;
-        }
-    </style>
+    <title>Gestão Seleção Brasileira</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav class="navbar">
         <div class="logo">W-Clone</div>
         <ul class="nav-links">
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Serviços</a></li>
-            <li><a href="#">Técnico</a></li>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#tecnico">Técnico</a></li>
         </ul>
     </nav>
 
-    <main class="container-pagina">
-        <header class="hero">
-            <h1>Gestão Seleção Brasileira</h1>
-            <p>Técnico: Carlo Ancelotti</p>
-        </header>
+    <header class="hero" id="inicio">
+        <h1>Gestão Seleção Brasileira</h1>
+        <p>Técnico: Carlo Ancelotti</p>
+        <div class="hero-badge">⚽ Temporada 2025</div>
+    </header>
 
-        <section class="conteudo">
-            <h2>Nossos Serviços</h2>
-            <p>Conteúdo ajustado para preencher melhor a tela.</p>
+    <main class="container-pagina">
+
+        <section id="servicos">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="categorias-grid">
+
+                <div class="categoria-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Treinamento">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Preparação</span>
+                        <h3>Treinamento Físico</h3>
+                        <p>Rotinas intensivas de condicionamento para manter os atletas no pico da performance.</p>
+                    </div>
+                </div>
+
+                <div class="categoria-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?w=600&q=80" alt="Táticas">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Estratégia</span>
+                        <h3>Análise Tática</h3>
+                        <p>Estudo detalhado dos adversários e montagem de esquemas táticos personalizados.</p>
+                    </div>
+                </div>
+
+                <div class="categoria-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80" alt="Saúde">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Saúde</span>
+                        <h3>Suporte Médico</h3>
+                        <p>Equipe completa de fisioterapeutas e médicos para cuidar dos atletas 24h.</p>
+                    </div>
+                </div>
+
+                <div class="categoria-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=600&q=80" alt="Nutrição">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Nutrição</span>
+                        <h3>Dieta Esportiva</h3>
+                        <p>Planos alimentares personalizados para otimizar energia e recuperação muscular.</p>
+                    </div>
+                </div>
+
+            </div>
         </section>
+
+        <section>
+            <h2 class="section-title">Escalação Principal</h2>
+            <div class="jogadores-grid">
+
+                <div class="jogador-card">
+                    <div class="img-wrap">
+                        <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=400&q=80" alt="Goleiro">
+                    </div>
+                    <div class="jogador-info">
+                        <div class="numero">1</div>
+                        <h4>Alisson</h4>
+                        <span class="posicao">Goleiro</span>
+                    </div>
+                </div>
+
+                <div class="jogador-card">
+                    <div class="img-wrap">
+                        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=400&q=80" alt="Lateral">
+                    </div>
+                    <div class="jogador-info">
+                        <div class="numero">2</div>
+                        <h4>Danilo</h4>
+                        <span class="posicao">Lateral</span>
+                    </div>
+                </div>
+
+                <div class="jogador-card">
+                    <div class="img-wrap">
+                        <img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?w=400&q=80" alt="Zagueiro">
+                    </div>
+                    <div class="jogador-info">
+                        <div class="numero">3</div>
+                        <h4>Marquinhos</h4>
+                        <span class="posicao">Zagueiro</span>
+                    </div>
+                </div>
+
+                <div class="jogador-card">
+                    <div class="img-wrap">
+                        <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&q=80" alt="Meia">
+                    </div>
+                    <div class="jogador-info">
+                        <div class="numero">8</div>
+                        <h4>Casemiro</h4>
+                        <span class="posicao">Meia</span>
+                    </div>
+                </div>
+
+                <div class="jogador-card">
+                    <div class="img-wrap">
+                        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&q=80" alt="Atacante">
+                    </div>
+                    <div class="jogador-info">
+                        <div class="numero">10</div>
+                        <h4>Rodrygo</h4>
+                        <span class="posicao">Atacante</span>
+                    </div>
+                </div>
+
+                <div class="jogador-card">
+                    <div class="img-wrap">
+                        <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=400&q=80" alt="Atacante">
+                    </div>
+                    <div class="jogador-info">
+                        <div class="numero">9</div>
+                        <h4>Vinicius Jr</h4>
+                        <span class="posicao">Atacante</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="tecnico">
+            <h2 class="section-title">Técnico</h2>
+            <div class="tecnico-section">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Carlo Ancelotti">
+                <div class="tecnico-info">
+                    <h3>Carlo Ancelotti</h3>
+                    <div class="cargo">Técnico Principal · Seleção Brasileira</div>
+                    <p>Um dos treinadores mais vitoriosos da história do futebol mundial. Com passagens por grandes clubes como Milan, Chelsea, Real Madrid e Bayern de Munique, Ancelotti traz ao Brasil décadas de experiência, títulos e uma filosofia de jogo baseada em equilíbrio, posicionamento e liberdade criativa para os atacantes.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
 </body>
