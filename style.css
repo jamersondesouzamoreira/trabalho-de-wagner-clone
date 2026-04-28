@@ -1,6 +1,12 @@
 /* ===========================
-   VARIÁVEIS ATUALIZADAS (Cores Brasileiras)
+   Reset & Base
 =========================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --verde:    #009c3b;
     --amarelo:  #FFDF00;
@@ -12,46 +18,93 @@
     --branco:   #ffffff;
 }
 
-/* DICA: No seu HTML, substitua os textos pelos dados abaixo:
-*/
-
-/* 1. TICKER (Texto de rolagem) */
-/* "URGENTE: Éder Militão passa por cirurgia e está fora da Copa do Mundo 2026. Alisson e Raphinha seguem em observação pelo DM da Seleção." */
-
-/* 2. HERO (Destaque Principal) */
-/* Título: "O CAMINHO PARA O HEXA" 
-   Subtítulo: "Carlo Ancelotti define convocação final para o dia 18 de maio. Brasil estreia dia 13 de junho contra Marrocos." 
-   Botão: "VER LISTA DE MONITORADOS" */
-
-/* 3. JOGOS (Grid de Partidas) */
-/* - JOGO 1: Cruzeiro x Boca Juniors (Libertadores) - 21h30 - Local: Mineirão
-   - JOGO 2: Botafogo x Ind. Petrolero (Sul-Americana) - 19h00 - Local: Nilton Santos
-   - JOGO 3: Millonarios x São Paulo (Sul-Americana) - 21h30 - Transmissão: SBT/ESPN
-   - JOGO 4: San Lorenzo x Santos (Sul-Americana) - 19h00 - Local: Nuevo Gasómetro
-*/
-
-/* 4. TABELA BRASILEIRÃO (Simulação com base nos dados atuais) */
-/*
-   1. Palmeiras - 32 pts
-   2. Flamengo - 26 pts
-   3. Fluminense - 26 pts
-   4. São Paulo - 23 pts
-*/
-
-/* 5. SEÇÃO TÉCNICO */
-/* Nome: Carlo Ancelotti
-   Cargo: Técnico da Seleção Brasileira
-   Bio: "Em clima de despedida pré-Copa, o italiano enfrenta dores de cabeça com lesões de titulares às vésperas da convocação final no Rio de Janeiro."
-*/
+body {
+    font-family: 'Barlow', sans-serif;
+    background-color: var(--cinza);
+    color: var(--texto);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
 /* ===========================
-   MELHORIA NO CSS (Efeito Ticker)
+   NAVBAR
 =========================== */
+.navbar {
+    background-color: var(--escuro);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    animation: slideDown 0.5s ease both;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+.logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--branco);
+}
+
+.logo span { color: var(--verde); }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--branco); }
+
+/* ===========================
+   TICKER (Corrigido)
+=========================== */
+.ticker {
+    background: var(--verde);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    height: 36px;
+    overflow: hidden;
+}
+
+.ticker-label {
+    background: var(--vermelho);
+    padding: 0 14px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    z-index: 10;
+}
+
+.ticker-track {
+    white-space: nowrap;
+    display: flex;
+}
+
 .ticker-track span {
     display: inline-block;
     padding-left: 100%;
-    animation: ticker 25s linear infinite; /* Aumentada a velocidade para leitura dinâmica */
-    will-change: transform;
+    animation: ticker 30s linear infinite;
+    font-weight: 600;
 }
 
 @keyframes ticker {
@@ -59,8 +112,102 @@
     to   { transform: translateX(-100%); }
 }
 
-/* EFEITO DE HOVER NAS NOTÍCIAS */
-.noticia-card:hover {
-    border-bottom: 4px solid var(--amarelo);
-    transition: all 0.3s ease;
+/* ===========================
+   HERO
+=========================== */
+.hero {
+    background: linear-gradient(135deg, var(--azul) 0%, #001a4d 100%);
+    display: flex;
+    align-items: center;
+    padding: 60px 5%;
+    gap: 40px;
+    color: white;
+}
+
+.hero-tag {
+    background: var(--vermelho);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--amarelo);
+    margin-bottom: 15px;
+}
+
+.hero-btn {
+    background: var(--verde);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.hero-btn:hover { background: #007a2f; }
+
+.hero-img-wrap img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* ===========================
+   CONTAINER & GRID
+=========================== */
+.container-pagina {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    border-left: 5px solid var(--verde);
+    padding-left: 15px;
+    margin-bottom: 30px;
+}
+
+.jogos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.jogo-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.jogo-card.destaque {
+    background: var(--azul);
+    color: white;
+    border-top: 4px solid var(--amarelo);
+}
+
+.footer {
+    background: var(--escuro);
+    color: #888;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .hero { flex-direction: column; text-align: center; }
+    .nav-links { display: none; }
 }

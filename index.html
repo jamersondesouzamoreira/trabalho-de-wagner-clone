@@ -3,83 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W-Clone Esporte | Notícias em Tempo Real</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>W-Clone Esporte | Portal Atualizado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">W-Clone <span>Esporte</span></div>
+        <div class="logo">W-CLONE <span>ESPORTE</span></div>
         <ul class="nav-links">
-            <li><a href="#inicio">Início</a></li>
             <li><a href="#jogos">Jogos</a></li>
             <li><a href="#noticias">Notícias</a></li>
-            <li><a href="#brasileiro">Brasileiro</a></li>
-            <li><a href="#tecnico">Seleção</a></li>
+            <li><a href="#tabela">Tabela</a></li>
+            <li><a href="#selecao">Seleção</a></li>
         </ul>
     </nav>
 
     <div class="ticker">
         <span class="ticker-label">URGENTE</span>
         <div class="ticker-track">
-            <span>🚨 Éder Militão passa por cirurgia e está fora da Copa do Mundo 2026 &nbsp;&nbsp; | &nbsp;&nbsp; ⚠️ Alisson e Raphinha seguem em observação pelo DM da Seleção &nbsp;&nbsp; | &nbsp;&nbsp; 🏟️ Mineirão terá lotação esgotada para Cruzeiro x Boca Juniors &nbsp;&nbsp; | &nbsp;&nbsp; 📺 Onde assistir: SBT transmite Champions League às 16h</span>
+            <span>🚨 Éder Militão passa por cirurgia e está fora da Copa 2026. &nbsp;&nbsp; | &nbsp;&nbsp; 🏆 Cruzeiro enfrenta o Boca Juniors hoje às 21h30 no Mineirão. &nbsp;&nbsp; | &nbsp;&nbsp; ⚽ Palmeiras segue líder isolado do Brasileirão.</span>
         </div>
     </div>
 
-    <header class="hero" id="inicio">
+    <header class="hero">
         <div class="hero-content">
-            <div class="hero-tag">🇧🇷 Rumo ao Hexa</div>
-            <h1>A Convocação Final</h1>
-            <p>Carlo Ancelotti define a lista para a Copa em 18 de maio. Brasil estreia dia 13 de junho contra Marrocos.</p>
-            <a href="#tecnico" class="hero-btn">Ver Planejamento da Seleção →</a>
+            <div class="hero-tag">Rumo ao Hexa</div>
+            <h1>O CAMINHO PARA A GLÓRIA</h1>
+            <p>Carlo Ancelotti define os últimos detalhes para a convocação oficial da Seleção Brasileira no dia 18 de maio.</p>
+            <a href="#" class="hero-btn">VER PLANEJAMENTO →</a>
         </div>
         <div class="hero-img-wrap">
-            <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=800&q=80" alt="Seleção Brasileira">
+            <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=800&q=80" alt="Estádio">
         </div>
     </header>
 
     <main class="container-pagina">
-
         <section id="jogos">
-            <h2 class="section-title">⚽ Agenda de Hoje — 28/04/2026</h2>
+            <h2 class="section-title">Jogos de Hoje</h2>
             <div class="jogos-grid">
-
                 <div class="jogo-card destaque">
-                    <div class="jogo-competicao">🏆 Libertadores — Oitavas</div>
+                    <div class="jogo-competicao">Libertadores</div>
                     <div class="jogo-times">
-                        <div class="time"><span>Cruzeiro</span></div>
-                        <div class="jogo-hora">21h30</div>
-                        <div class="time"><span>Boca Juniors</span></div>
+                        <div class="time">Cruzeiro</div>
+                        <div class="jogo-hora">21:30</div>
+                        <div class="time">Boca Juniors</div>
                     </div>
-                    <div class="jogo-onde">📺 ESPN · Disney+</div>
+                    <div class="jogo-onde">Mineirão</div>
                 </div>
-
-                <div class="jogo-card">
-                    <div class="jogo-competicao">🌎 Sul-Americana</div>
-                    <div class="jogo-times">
-                        <div class="time"><span>Botafogo</span></div>
-                        <div class="jogo-hora">19h00</div>
-                        <div class="time"><span>Ind. Petrolero</span></div>
-                    </div>
-                    <div class="jogo-onde">📺 Paramount+</div>
                 </div>
+        </section>
 
-                <div class="jogo-card">
-                    <div class="jogo-competicao">🌎 Sul-Americana</div>
-                    <div class="jogo-times">
-                        <div class="time"><span>Millonarios</span></div>
-                        <div class="jogo-hora">21h30</div>
-                        <div class="time"><span>São Paulo</span></div>
+        <section id="noticias">
+            <h2 class="section-title">Últimas Notícias</h2>
+            <div class="noticias-grid">
+                <article class="noticia-card grande">
+                    <div class="noticia-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80" alt="Notícia">
+                        <span class="noticia-tag">Seleção</span>
                     </div>
-                    <div class="jogo-onde">📺 SBT · Disney+</div>
-                </div>
+                    <div class="noticia-body">
+                        <h3>Drama no Real Madrid: Militão fora da Copa</h3>
+                        <p>A lesão ligamentar confirmada nesta manhã retira um dos pilares da defesa de Ancelotti.</p>
+                        <span class="noticia-data">28 Abr 2026</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
 
-                <div class="jogo-card">
-                    <div class="jogo-competicao">🇪🇺 Champions League — Semi</div>
-                    <div class="jogo-times">
-                        <div class="time"><span>Real Madrid</span></div>
-                        <div class="jogo-hora">16h00</div>
-                        <div class="time"><span>Man. City</span></div>
-                    </div>
-                    <div class="jogo-onde">📺 SBT
+    <footer class="footer">
+        <p>&copy; 2026 W-Clone Esporte - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
