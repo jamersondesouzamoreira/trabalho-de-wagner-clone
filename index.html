@@ -1,123 +1,726 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <link rel="stylesheet" href="stylejam.css">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UOL Esporte | Tropical Punch 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+
+/* ══════════════════════════════════════════════
+   TROPICAL PUNCH 2026 — UOL ESPORTE
+   Versão autocontida (HTML + CSS em um arquivo)
+══════════════════════════════════════════════ */
+
+:root {
+  --bg:          #030a06;
+  --jungle:      #003d2e;
+  --green:       #00ff88;
+  --red:         #ff3d00;
+  --amber:       #ffaa00;
+  --cyan:        #00e5ff;
+  --violet:      #cc00ff;
+  --white:       #f0fdf8;
+  --muted:       #7aaa96;
+  --glass:       rgba(255,255,255,0.04);
+  --border:      rgba(255,255,255,0.08);
+  --r:           18px;
+  --ease:        cubic-bezier(.4,0,.2,1);
+}
+
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Barlow',sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.6;
+  overflow-x:hidden;
+  cursor:default;
+}
+
+/* ─── GRAIN OVERLAY ─── */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:256px;
+}
+
+/* ─── AMBIENT GLOW ─── */
+body::after{
+  content:'';
+  position:fixed;
+  top:-30%;left:50%;
+  transform:translateX(-50%);
+  width:900px;height:500px;
+  background:radial-gradient(ellipse,rgba(0,80,55,.4) 0%,transparent 70%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.container{max-width:1220px;margin:0 auto;padding:0 24px}
+
+/* ══════════════════════════
+   HEADER
+══════════════════════════ */
+.top-bar{
+  background:rgba(3,10,6,.92);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  padding:13px 0;
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;
+  z-index:1100;
+}
+.top-bar-inner{
+  display:flex;align-items:center;gap:28px;
+}
+
+/* LOGO */
+.logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:38px;letter-spacing:3px;
+  color:#fff;text-decoration:none;
+  flex-shrink:0;
+  position:relative;
+}
+.logo em{
+  font-style:normal;
+  color:var(--green);
+  filter:drop-shadow(0 0 12px var(--green));
+}
+.logo::after{
+  content:'';
+  position:absolute;
+  bottom:-2px;left:0;
+  width:100%;height:2px;
+  background:linear-gradient(90deg,var(--green),transparent);
+}
+
+/* TOP NAV */
+.top-nav{
+  display:flex;gap:2px;flex:1;
+  overflow-x:auto;scrollbar-width:none;
+}
+.top-nav::-webkit-scrollbar{display:none}
+.top-nav a{
+  padding:7px 15px;
+  color:var(--muted);
+  text-decoration:none;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:13px;
+  text-transform:uppercase;letter-spacing:.5px;
+  border-radius:7px;
+  transition:.3s var(--ease);
+  white-space:nowrap;
+}
+.top-nav a:hover{
+  background:rgba(255,255,255,.06);
+  color:var(--green);
+}
+.top-nav .hl{
+  color:var(--green);
+  background:rgba(0,255,136,.08);
+  border:1px solid rgba(0,255,136,.2);
+}
+
+/* ASSINE BUTTON */
+.btn-assine{
+  background:linear-gradient(135deg,var(--green),var(--cyan));
+  background-size:200% 200%;
+  animation:gradShift 4s ease infinite;
+  border:none;padding:9px 22px;
+  border-radius:50px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:13px;letter-spacing:1px;
+  cursor:pointer;color:#000;flex-shrink:0;
+  transition:.3s var(--ease);
+  box-shadow:0 0 20px rgba(0,255,136,.25);
+}
+.btn-assine:hover{
+  transform:scale(1.07) translateY(-2px);
+  box-shadow:0 12px 32px rgba(0,255,136,.45);
+}
+
+@keyframes gradShift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ══════════════════════════
+   TICKER
+══════════════════════════ */
+.ticker-bar{
+  background:linear-gradient(90deg,var(--red) 0%,#ff6a00 50%,var(--red) 100%);
+  background-size:200% auto;
+  animation:gradShift 6s linear infinite;
+  padding:9px 0;overflow:hidden;
+}
+.ticker-inner{overflow:hidden;position:relative}
+.ticker-track{
+  display:inline-flex;
+  white-space:nowrap;
+  animation:tickerRun 60s linear infinite;
+}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:13px;
+  letter-spacing:.3px;color:#fff;
+  padding:0 40px;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.ticker-item::after{
+  content:'•';
+  opacity:.5;
+}
+
+@keyframes tickerRun{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ══════════════════════════
+   CARDS BASE
+══════════════════════════ */
+.card{
+  position:relative;border-radius:var(--r);overflow:hidden;
+  background:var(--glass);
+  border:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:.45s var(--ease);
+  display:flex;flex-direction:column;
+}
+.card:hover{
+  transform:translateY(-5px) scale(1.015);
+  border-color:rgba(0,255,136,.35);
+  box-shadow:0 28px 60px rgba(0,0,0,.75),0 0 24px rgba(0,255,136,.18);
+}
+
+/* IMG WRAP */
+.img-wrap{overflow:hidden;width:100%;position:relative}
+.img-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  display:block;
+  filter:saturate(1.3) contrast(1.08);
+  transition:transform .7s var(--ease), filter .7s var(--ease);
+}
+.card:hover .img-wrap img{
+  transform:scale(1.09);
+  filter:saturate(1.65) contrast(1.1);
+}
+
+/* ══════════════════════════
+   HERO GRID
+══════════════════════════ */
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 390px;
+  gap:26px;
+  margin:36px 0;
+  position:relative;z-index:1;
+}
+
+/* ── HERO CARD ── */
+.card-hero{height:575px;cursor:pointer;}
+.card-hero .img-wrap{
+  position:absolute;inset:0;height:100%;
+  clip-path:inset(0 0 0 0 round var(--r));
+}
+/* multi-layer gradient overlay */
+.card-hero::after{
+  content:'';
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to top,rgba(0,0,0,.97) 0%,rgba(0,0,0,.65) 38%,rgba(0,0,0,.12) 65%,transparent 100%),
+    linear-gradient(to right,rgba(0,0,0,.4) 0%,transparent 60%);
+  border-radius:var(--r);
+}
+.card-hero .info{
+  position:absolute;bottom:0;left:0;width:100%;
+  padding:38px 42px;z-index:2;
+}
+
+/* animated neon border on hero hover */
+.card-hero::before{
+  content:'';
+  position:absolute;inset:0;z-index:3;
+  border-radius:var(--r);
+  background:transparent;
+  border:2px solid transparent;
+  transition:.4s var(--ease);
+  pointer-events:none;
+}
+.card-hero:hover::before{
+  border-color:rgba(0,255,136,.4);
+  box-shadow:inset 0 0 40px rgba(0,255,136,.06);
+}
+
+/* ── TAG ROW ── */
+.tag-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+
+.live-badge{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:11px;letter-spacing:1.5px;
+  color:var(--green);
+  display:inline-flex;align-items:center;gap:5px;
+}
+.live-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 8px var(--green);
+  animation:blink 1.6s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+
+.card-hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.1rem,4.5vw,3.5rem);
+  line-height:.93;
+  margin-bottom:14px;
+  text-shadow:0 2px 24px rgba(0,0,0,.9);
+  letter-spacing:1px;
+}
+.subtitle{
+  font-size:15px;color:rgba(240,253,250,.75);
+  line-height:1.5;margin-bottom:18px;max-width:540px;
+}
+.hero-stats{
+  display:flex;align-items:center;gap:8px;
+  flex-wrap:wrap;
+}
+.stat-pill{
+  background:rgba(0,255,136,.1);
+  border:1px solid rgba(0,255,136,.25);
+  color:var(--green);
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:12px;letter-spacing:.5px;
+  padding:4px 12px;border-radius:50px;
+}
+
+/* ══════════════════════════
+   SIDEBAR
+══════════════════════════ */
+.sidebar{display:flex;flex-direction:column;gap:16px}
+
+.card-side{
+  display:grid;
+  grid-template-columns:112px 1fr;
+  gap:13px;padding:13px;
+  align-items:start;cursor:pointer;
+}
+.card-side .img-wrap{
+  height:112px;width:112px;
+  border-radius:11px;flex-shrink:0;
+}
+.side-content{padding:2px 0}
+.side-content h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:14.5px;font-weight:700;
+  line-height:1.22;text-transform:uppercase;
+  margin:7px 0 5px;
+}
+.side-sub{font-size:11.5px;color:var(--muted);line-height:1.4}
+
+/* ══════════════════════════
+   SECTION TITLE
+══════════════════════════ */
+.section-title{
+  display:flex;align-items:center;gap:14px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:12px;font-weight:800;letter-spacing:3.5px;
+  text-transform:uppercase;color:var(--muted);
+  margin:44px 0 20px;
+  position:relative;z-index:1;
+}
+.section-title::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(to right,var(--border),transparent);
+}
+
+/* ══════════════════════════
+   MINI CARDS
+══════════════════════════ */
+.bottom-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;margin-bottom:50px;
+  position:relative;z-index:1;
+}
+.card-mini{cursor:pointer}
+.mini-thumb{height:215px;position:relative}
+
+/* floating badge on thumbnail */
+.card-badge{
+  position:absolute;top:12px;right:12px;z-index:2;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:10px;letter-spacing:1px;
+  padding:4px 10px;border-radius:6px;
+  background:var(--green);color:#000;
+}
+.card-badge.red{background:var(--red);color:#fff}
+.card-badge.violet{background:var(--violet);color:#fff}
+.card-badge.amber{background:var(--amber);color:#000}
+
+.info-mini{padding:17px 19px 21px;display:flex;flex-direction:column;gap:7px}
+.info-mini h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:17px;font-weight:700;
+  line-height:1.2;text-transform:uppercase;
+}
+
+/* ══════════════════════════
+   SCORES SECTION
+══════════════════════════ */
+.scores-section{margin-bottom:80px;position:relative;z-index:1}
+.scores-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.score-card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:15px 16px;
+  display:flex;flex-direction:column;gap:7px;
+  transition:.35s var(--ease);
+}
+.score-card:hover{
+  border-color:rgba(0,229,255,.3);
+  background:rgba(0,229,255,.04);
+  transform:translateY(-3px);
+}
+.score-comp{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:10px;font-weight:800;letter-spacing:2px;
+  color:var(--cyan);text-transform:uppercase;
+}
+.score-match{
+  display:flex;align-items:center;justify-content:space-between;gap:6px;
+}
+.score-team{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:13px;
+  text-transform:uppercase;flex:1;line-height:1.2;
+}
+.score-team.r{text-align:right}
+.score-num{
+  font-family:'Bebas Neue',sans-serif;font-size:24px;
+  color:var(--green);white-space:nowrap;flex-shrink:0;
+  text-shadow:0 0 14px rgba(0,255,136,.5);
+}
+.score-num s{
+  font-style:normal;text-decoration:none;
+  color:var(--muted);font-size:17px;margin:0 3px;
+}
+.score-venue{font-size:10.5px;color:var(--muted);letter-spacing:.2px}
+
+/* ══════════════════════════
+   TAGS
+══════════════════════════ */
+.tag{
+  background:var(--green);color:#000;
+  padding:5px 12px;border-radius:6px;
+  font-weight:900;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;letter-spacing:.5px;
+  text-transform:uppercase;
+  display:inline-block;
+  box-shadow:inset 0 -2px 0 rgba(0,0,0,.12);
+}
+.t-red   {background:var(--red);color:#fff}
+.t-cyan  {background:var(--cyan);color:#000}
+.t-violet{background:var(--violet);color:#fff}
+.t-amber {background:var(--amber);color:#000}
+
+/* ══════════════════════════
+   FOOTER
+══════════════════════════ */
+footer{
+  background:#000;
+  border-top:1px solid var(--border);
+  background-image:radial-gradient(ellipse 70% 60% at 50% 0%,var(--jungle),transparent 70%);
+  padding:70px 24px 50px;
+  text-align:center;
+  position:relative;z-index:1;
+}
+.footer-inner{max-width:600px;margin:0 auto}
+.footer-brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:32px;color:var(--green);
+  letter-spacing:5px;
+  filter:drop-shadow(0 0 10px var(--green));
+  margin-bottom:10px;
+}
+.footer-copy{font-size:13px;color:var(--muted);margin-bottom:24px}
+.footer-links{display:flex;justify-content:center;gap:24px}
+.footer-links a{
+  font-size:11px;font-weight:600;
+  color:rgba(240,253,250,.35);
+  text-decoration:none;text-transform:uppercase;letter-spacing:.5px;
+  transition:color .3s;
+}
+.footer-links a:hover{color:var(--green)}
+
+/* ══════════════════════════
+   PAGE LOAD ANIMATIONS
+══════════════════════════ */
+.fade-up{
+  opacity:0;transform:translateY(22px);
+  animation:fadeUp .65s var(--ease) forwards;
+}
+.fade-up.d1{animation-delay:.1s}
+.fade-up.d2{animation-delay:.2s}
+.fade-up.d3{animation-delay:.3s}
+.fade-up.d4{animation-delay:.45s}
+.fade-up.d5{animation-delay:.6s}
+
+@keyframes fadeUp{
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ══════════════════════════
+   RESPONSIVE
+══════════════════════════ */
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr}
+  .card-hero{height:430px}
+  .scores-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .top-nav{display:none}
+  .bottom-grid{grid-template-columns:1fr}
+  .card-side{grid-template-columns:90px 1fr}
+  .card-side .img-wrap{height:90px;width:90px}
+  .scores-grid{grid-template-columns:1fr}
+  .card-hero{height:370px}
+  .card-hero .info{padding:24px}
+}
+
+  </style>
 </head>
 <body>
 
+<!-- ══ HEADER ══ -->
 <header class="top-bar">
   <div class="container top-bar-inner">
-    <a href="#" class="logo">UOL <span>ESPORTE</span></a>
+    <a href="#" class="logo">UOL <em>ESPORTE</em></a>
+    <nav class="top-nav">
+      <a href="#">Futebol</a>
+      <a href="#" class="hl">Copa 2026</a>
+      <a href="#">Brasileirão</a>
+      <a href="#">Libertadores</a>
+      <a href="#">NBA</a>
+      <a href="#">F1</a>
+      <a href="#">Tênis</a>
+    </nav>
     <button class="btn-assine">ASSINE</button>
   </div>
 </header>
 
-<nav>
-  <div class="container nav-inner">
-    <a href="#">Futebol</a>
-    <a href="#" class="link-destaque">Copa 2026</a>
-    <a href="#">Brasileirão</a>
-    <a href="#">Libertadores</a>
-    <a href="#">NBA</a>
-    <a href="#">F1</a>
-  </div>
-</nav>
-
+<!-- ══ TICKER ══ -->
 <div class="ticker-bar">
-  <div class="ticker-text">
-    🌴 BEM-VINDOS AO VERÃO DE 2026: COPA DO MUNDO COMEÇA EM 50 DIAS • ANCELOTTI DEFINE ESTRATÉGIA PARA O CALOR DE MIAMI • NEYMAR CONFIRMA: "MEU ÚLTIMO BAILE" • NBA PLAYOFFS: CELTICS E HEAT FAZEM JOGO HISTÓRICO HOJE
+  <div class="ticker-inner">
+    <div class="ticker-track">
+      <!-- duplicado para loop contínuo -->
+      <span class="ticker-item">⚽ VINI JR. FAZ 2 E REAL MADRID ADIA TÍTULO DO BARCELONA — EL CLÁSICO DECIDE LALIGA</span>
+      <span class="ticker-item">🇧🇷 BRASILEIRÃO 14ª RODADA: ATL-MG 3×1 CRUZEIRO · PALMEIRAS 1×1 SANTOS</span>
+      <span class="ticker-item">🏀 PLAYOFFS NBA: THUNDER × LAKERS ABRE SEMIFINAL DO OESTE AMANHÃ ÀS 21H30</span>
+      <span class="ticker-item">🏎️ GP MIAMI: CORRIDA PODE TER HORÁRIO ALTERADO POR RISCO DE TEMPESTADE</span>
+      <span class="ticker-item">⚽ COPA 2026: MENOS DE 40 DIAS PARA A ABERTURA EM DALLAS, TX</span>
+      <span class="ticker-item">🏀 CADE CUNNINGHAM: 45 PONTOS NO JOGO 7 — PISTONS VIRAM HISTÓRICO 3×1 CONTRA O MAGIC</span>
+      <!-- REPEAT for seamless loop -->
+      <span class="ticker-item">⚽ VINI JR. FAZ 2 E REAL MADRID ADIA TÍTULO DO BARCELONA — EL CLÁSICO DECIDE LALIGA</span>
+      <span class="ticker-item">🇧🇷 BRASILEIRÃO 14ª RODADA: ATL-MG 3×1 CRUZEIRO · PALMEIRAS 1×1 SANTOS</span>
+      <span class="ticker-item">🏀 PLAYOFFS NBA: THUNDER × LAKERS ABRE SEMIFINAL DO OESTE AMANHÃ ÀS 21H30</span>
+      <span class="ticker-item">🏎️ GP MIAMI: CORRIDA PODE TER HORÁRIO ALTERADO POR RISCO DE TEMPESTADE</span>
+      <span class="ticker-item">⚽ COPA 2026: MENOS DE 40 DIAS PARA A ABERTURA EM DALLAS, TX</span>
+      <span class="ticker-item">🏀 CADE CUNNINGHAM: 45 PONTOS NO JOGO 7 — PISTONS VIRAM HISTÓRICO 3×1 CONTRA O MAGIC</span>
+    </div>
   </div>
 </div>
 
+<!-- ══ MAIN ══ -->
 <main class="container">
+
+  <!-- HERO GRID -->
   <div class="hero-grid">
-    <article class="card card-hero">
+
+    <!-- CARD HERO -->
+    <article class="card card-hero fade-up d1">
       <div class="img-wrap">
-        <img src="ancelotti.jpg" alt="Treino Seleção">
+        <img
+          src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=960&q=85"
+          alt="Vinicius Junior"
+          loading="eager"
+        >
       </div>
       <div class="info">
-        <span class="tag">CONVOCAÇÃO HEXA</span>
-        <h1>A NOVA ERA:ANCELOTTI convoca 26 nomes com Endrick e Estêvão no comando</h1>
-        <p class="subtitle">Confira a lista completa dos jogadores que representarão o Brasil no Mundial.</p>
+        <div class="tag-row">
+          <span class="tag t-red">🔥 LALIGA — 34ª RODADA</span>
+          <span class="live-badge"><span class="live-dot"></span>ENCERRADO HOJE</span>
+        </div>
+        <h1>VINI JR. FAZ 2 E SALVA O REAL: Barcelona terá de esperar o Clásico para levantar a taça</h1>
+        <p class="subtitle">Gols nos 55' e 66' com assistência de Bellingham e uma jogada individual brilhante. La Liga decide no Camp Nou no próximo domingo.</p>
+        <div class="hero-stats">
+          <span class="stat-pill">⚽ 21 gols na temporada</span>
+          <span class="stat-pill">🎯 10 assistências</span>
+          <span class="stat-pill">🏆 50 jogos disputados</span>
+        </div>
       </div>
     </article>
 
+    <!-- SIDEBAR -->
     <aside class="sidebar">
-      <article class="card card-side">
+
+      <article class="card card-side fade-up d2">
         <div class="img-wrap side-thumb">
-          <img src="neymar.jpg" alt="Neymar">
+          <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=300&q=80" alt="Atlético MG">
         </div>
         <div class="side-content">
-          <span class="tag tag-orchid">EXCLUSIVO</span>
-          <h3>Neymar Jr. abre as portas da sua nova mansão em Miami.</h3>
+          <span class="tag t-cyan">BRASILEIRÃO</span>
+          <h3>Galo domina! Atlético-MG 3×1 Cruzeiro no Mineirão em noite histórica de Minda.</h3>
+          <p class="side-sub">Minda abriu, Maycon ampliou de pênalti e Cassierra fechou de cabeça. Kaio Jorge descontou nos acréscimos.</p>
         </div>
       </article>
 
-      <article class="card card-side">
+      <article class="card card-side fade-up d3">
         <div class="img-wrap side-thumb">
-          <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=300&q=80" alt="Boca vs Palmeiras">
+          <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=300&q=80" alt="NBA Playoffs">
         </div>
         <div class="side-content">
-          <span class="tag tag-ocean">LIBERTADORES</span>
-          <h3>Palmeiras cala a Bombonera com show de Felipe Anderson.</h3>
+          <span class="tag t-violet">NBA PLAYOFFS</span>
+          <h3>Semifinais abertas: Thunder x Lakers e Pistons x Cavs começam amanhã.</h3>
+          <p class="side-sub">OKC recebe LeBron às 21h30 (Brasília). Cade Cunningham vem de 45 pts no Jogo 7 contra o Magic.</p>
         </div>
       </article>
 
-      <article class="card card-side">
+      <article class="card card-side fade-up d4">
         <div class="img-wrap side-thumb">
-          <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=300&q=80" alt="Playoffs NBA">
+          <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=300&q=80" alt="Palmeiras x Santos">
         </div>
         <div class="side-content">
-          <span class="tag tag-hibiscus">NBA</span>
-          <h3>Playoffs: Jimmy Butler promete 'vingança' no Jogo 5.</h3>
+          <span class="tag">BRASILEIRÃO</span>
+          <h3>Palmeiras segue líder: empata com Santos e alcança 9 jogos sem derrota no Brasileiro.</h3>
+          <p class="side-sub">Rollheiser abriu para o Peixe; Flaco López empatou no 2°T. Gol da virada de Allan anulado pelo VAR.</p>
         </div>
       </article>
+
     </aside>
   </div>
 
-  <h2 class="section-title">EM DESTAQUE</h2>
+  <!-- EM DESTAQUE -->
+  <h2 class="section-title"><span>EM DESTAQUE</span></h2>
 
   <section class="bottom-grid">
-    <article class="card card-mini">
+
+    <article class="card card-mini fade-up d3">
       <div class="img-wrap mini-thumb">
-        <img src="carlos.jpg" alt="Alcaraz">
+        <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?auto=format&fit=crop&w=560&q=80" alt="F1 Miami">
+        <span class="card-badge amber">GP MIAMI</span>
       </div>
       <div class="info-mini">
-        <span class="tag">TÊNIS</span>
-        <h4>Carlos Alcaraz brilha sob o sol de Madrid e vai às semis.</h4>
+        <span class="tag t-amber">FÓRMULA 1</span>
+        <h4>GP de Miami: risco de tempestade ameaça horário. Ferrari, McLaren e Mercedes chegam com pacotes de atualização.</h4>
       </div>
     </article>
 
-    <article class="card card-mini">
+    <article class="card card-mini fade-up d4">
       <div class="img-wrap mini-thumb">
-        <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?auto=format&fit=crop&w=500&q=80" alt="F1 Miami">
+        <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=560&q=80" alt="Cade Cunningham NBA">
+        <span class="card-badge violet">JOGO 7</span>
       </div>
       <div class="info-mini">
-        <span class="tag tag-sunset">FÓRMULA 1</span>
-        <h4>GP de Miami: Hamilton coloca Ferrari na primeira fila.</h4>
+        <span class="tag t-violet">NBA</span>
+        <h4>Heróico! Pistons viram série histórica 3×1 contra Magic. Cunningham anota 45, 32 e 32 nos três últimos jogos.</h4>
       </div>
     </article>
 
-    <article class="card card-mini">
+    <article class="card card-mini fade-up d5">
       <div class="img-wrap mini-thumb">
-        <img src="volei final.jpg" alt="Volei Final">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=560&q=80" alt="Copa 2026">
+        <span class="card-badge red">-40 DIAS</span>
       </div>
       <div class="info-mini">
-        <span class="tag tag-ocean">VÔLEI</span>
-        <h4>Final da Superliga: Ingressos para o jogo decisivo esgotados.</h4>
+        <span class="tag t-red">COPA 2026</span>
+        <h4>Contagem regressiva: abertura em Dallas com 48 seleções. Brasil treina o esquema de Ancelotti nos EUA.</h4>
       </div>
     </article>
+
   </section>
+
+  <!-- RESULTADOS -->
+  <h2 class="section-title"><span>📊 RESULTADOS — 04/05/2026</span></h2>
+  <section class="scores-section">
+    <div class="scores-grid">
+
+      <div class="score-card">
+        <span class="score-comp">LaLiga · 34ª Rodada</span>
+        <div class="score-match">
+          <span class="score-team">Espanyol</span>
+          <span class="score-num">0<s>×</s>2</span>
+          <span class="score-team r">Real Madrid</span>
+        </div>
+        <span class="score-venue">RCDE Stadium · Encerrado</span>
+      </div>
+
+      <div class="score-card">
+        <span class="score-comp">Brasileirão · 14ª Rodada</span>
+        <div class="score-match">
+          <span class="score-team">Cruzeiro</span>
+          <span class="score-num">1<s>×</s>3</span>
+          <span class="score-team r">Atlético-MG</span>
+        </div>
+        <span class="score-venue">Mineirão, BH · Encerrado</span>
+      </div>
+
+      <div class="score-card">
+        <span class="score-comp">Brasileirão · 14ª Rodada</span>
+        <div class="score-match">
+          <span class="score-team">Palmeiras</span>
+          <span class="score-num">1<s>×</s>1</span>
+          <span class="score-team r">Santos</span>
+        </div>
+        <span class="score-venue">Allianz Parque, SP · Encerrado</span>
+      </div>
+
+      <div class="score-card">
+        <span class="score-comp">Brasileirão · 14ª Rodada</span>
+        <div class="score-match">
+          <span class="score-team">Botafogo</span>
+          <span class="score-num">1<s>×</s>2</span>
+          <span class="score-team r">Remo</span>
+        </div>
+        <span class="score-venue">Nilton Santos, RJ · Encerrado</span>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
+<!-- ══ FOOTER ══ -->
 <footer>
-  <p class="footer-brand">UOL ESPORTE TROPICAL © 2026</p>
-  <p class="footer-copy">Cobertura especial direta de Miami, Cidade do México e Vancouver.</p>
+  <div class="footer-inner">
+    <p class="footer-brand">UOL ESPORTE TROPICAL © 2026</p>
+    <p class="footer-copy">Cobertura especial para a Copa do Mundo 2026 — EUA, México e Canadá.</p>
+    <div class="footer-links">
+      <a href="#">Privacidade</a>
+      <a href="#">Anuncie</a>
+      <a href="#">Fale Conosco</a>
+      <a href="#">Newsletter</a>
+    </div>
+  </div>
 </footer>
 
 </body>
