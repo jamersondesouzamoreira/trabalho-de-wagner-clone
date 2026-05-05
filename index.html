@@ -3,723 +3,555 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UOL Esporte | Tropical Punch 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <title>UOL Esporte · 05/05/2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
   <style>
-
-/* ══════════════════════════════════════════════
-   TROPICAL PUNCH 2026 — UOL ESPORTE
-   Versão autocontida (HTML + CSS em um arquivo)
-══════════════════════════════════════════════ */
-
-:root {
-  --bg:          #030a06;
-  --jungle:      #003d2e;
-  --green:       #00ff88;
-  --red:         #ff3d00;
-  --amber:       #ffaa00;
-  --cyan:        #00e5ff;
-  --violet:      #cc00ff;
-  --white:       #f0fdf8;
-  --muted:       #7aaa96;
-  --glass:       rgba(255,255,255,0.04);
-  --border:      rgba(255,255,255,0.08);
-  --r:           18px;
-  --ease:        cubic-bezier(.4,0,.2,1);
+:root{
+  --bg:#080b0a;--surface:#0e1410;--card:rgba(255,255,255,.032);
+  --border:rgba(255,255,255,.075);
+  --green:#00e676;--green2:#69f0ae;
+  --red:#ff3b2e;--amber:#ffca28;--cyan:#18ffff;--violet:#ea80fc;
+  --ink:#e8f5e9;--muted:#607d6a;--live:#ff1744;
+  --r:10px;--ease:cubic-bezier(.22,1,.36,1);
 }
-
-/* ─── RESET ─── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Barlow',sans-serif;
-  background:var(--bg);
-  color:var(--white);
-  line-height:1.6;
-  overflow-x:hidden;
-  cursor:default;
-}
-
-/* ─── GRAIN OVERLAY ─── */
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.5}
 body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:9999;
-  opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:256px;
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.02;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;
 }
+.ambient{position:fixed;top:-280px;left:50%;transform:translateX(-50%);width:1000px;height:560px;background:radial-gradient(ellipse,rgba(0,100,45,.2) 0%,transparent 66%);pointer-events:none;z-index:0}
+.W{max-width:1260px;margin:0 auto;padding:0 24px}
 
-/* ─── AMBIENT GLOW ─── */
-body::after{
-  content:'';
-  position:fixed;
-  top:-30%;left:50%;
-  transform:translateX(-50%);
-  width:900px;height:500px;
-  background:radial-gradient(ellipse,rgba(0,80,55,.4) 0%,transparent 70%);
-  pointer-events:none;
-  z-index:0;
-}
+/* HEADER */
+.hdr{position:sticky;top:0;z-index:1100;background:rgba(8,11,10,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.hdr-inner{display:flex;align-items:center;gap:20px;padding:11px 0}
+.logo{font-family:'Anton',sans-serif;font-size:26px;letter-spacing:2px;color:var(--ink);text-decoration:none;flex-shrink:0;display:flex;align-items:center}
+.logo-sep{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--green);margin:0 5px 2px;box-shadow:0 0 8px var(--green);animation:gb 2s ease-in-out infinite}
+@keyframes gb{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.55)}}
+.logo-esp{color:var(--green);font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:1px;font-size:20px}
+.nav{display:flex;gap:1px;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{padding:6px 14px;color:var(--muted);text-decoration:none;font-family:'Oswald',sans-serif;font-weight:400;font-size:13px;letter-spacing:.5px;text-transform:uppercase;border-radius:6px;transition:.22s var(--ease);white-space:nowrap}
+.nav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.nav .on{color:var(--green);background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.16)}
+.btn-ass{flex-shrink:0;font-family:'Oswald',sans-serif;font-weight:600;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;border-radius:5px;border:none;cursor:pointer;background:var(--green);color:#000;transition:.25s cubic-bezier(.34,1.56,.64,1)}
+.btn-ass:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 6px 24px rgba(0,230,118,.35)}
 
-.container{max-width:1220px;margin:0 auto;padding:0 24px}
-
-/* ══════════════════════════
-   HEADER
-══════════════════════════ */
-.top-bar{
-  background:rgba(3,10,6,.92);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  padding:13px 0;
-  border-bottom:1px solid var(--border);
-  position:sticky;top:0;
-  z-index:1100;
-}
-.top-bar-inner{
-  display:flex;align-items:center;gap:28px;
-}
-
-/* LOGO */
-.logo{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:38px;letter-spacing:3px;
-  color:#fff;text-decoration:none;
-  flex-shrink:0;
-  position:relative;
-}
-.logo em{
-  font-style:normal;
-  color:var(--green);
-  filter:drop-shadow(0 0 12px var(--green));
-}
-.logo::after{
-  content:'';
-  position:absolute;
-  bottom:-2px;left:0;
-  width:100%;height:2px;
-  background:linear-gradient(90deg,var(--green),transparent);
-}
-
-/* TOP NAV */
-.top-nav{
-  display:flex;gap:2px;flex:1;
-  overflow-x:auto;scrollbar-width:none;
-}
-.top-nav::-webkit-scrollbar{display:none}
-.top-nav a{
-  padding:7px 15px;
-  color:var(--muted);
-  text-decoration:none;
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:700;font-size:13px;
-  text-transform:uppercase;letter-spacing:.5px;
-  border-radius:7px;
-  transition:.3s var(--ease);
-  white-space:nowrap;
-}
-.top-nav a:hover{
-  background:rgba(255,255,255,.06);
-  color:var(--green);
-}
-.top-nav .hl{
-  color:var(--green);
-  background:rgba(0,255,136,.08);
-  border:1px solid rgba(0,255,136,.2);
-}
-
-/* ASSINE BUTTON */
-.btn-assine{
-  background:linear-gradient(135deg,var(--green),var(--cyan));
-  background-size:200% 200%;
-  animation:gradShift 4s ease infinite;
-  border:none;padding:9px 22px;
-  border-radius:50px;
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;font-size:13px;letter-spacing:1px;
-  cursor:pointer;color:#000;flex-shrink:0;
-  transition:.3s var(--ease);
-  box-shadow:0 0 20px rgba(0,255,136,.25);
-}
-.btn-assine:hover{
-  transform:scale(1.07) translateY(-2px);
-  box-shadow:0 12px 32px rgba(0,255,136,.45);
-}
-
-@keyframes gradShift{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
-
-/* ══════════════════════════
-   TICKER
-══════════════════════════ */
-.ticker-bar{
-  background:linear-gradient(90deg,var(--red) 0%,#ff6a00 50%,var(--red) 100%);
-  background-size:200% auto;
-  animation:gradShift 6s linear infinite;
-  padding:9px 0;overflow:hidden;
-}
-.ticker-inner{overflow:hidden;position:relative}
-.ticker-track{
-  display:inline-flex;
-  white-space:nowrap;
-  animation:tickerRun 60s linear infinite;
-}
+/* TICKER */
+.ticker{background:#b80d08;border-bottom:1px solid rgba(255,0,0,.2);overflow:hidden}
+.ticker-track{display:inline-flex;white-space:nowrap;animation:tick 52s linear infinite;padding:8px 0}
 .ticker-track:hover{animation-play-state:paused}
-.ticker-item{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:800;font-size:13px;
-  letter-spacing:.3px;color:#fff;
-  padding:0 40px;
-  display:inline-flex;align-items:center;gap:8px;
-}
-.ticker-item::after{
-  content:'•';
-  opacity:.5;
-}
+.t-item{font-family:'Oswald',sans-serif;font-weight:500;font-size:12px;letter-spacing:.6px;color:#fff;padding:0 30px;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
+.t-dot{color:rgba(255,255,255,.3);font-size:16px;margin:0 -12px}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-@keyframes tickerRun{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
+/* HERO AREA */
+main{position:relative;z-index:1}
+.hero-area{display:grid;grid-template-columns:1fr 348px;gap:18px;padding:28px 0 0}
+.card-hero{position:relative;border-radius:var(--r);overflow:hidden;height:520px;cursor:pointer;transition:.5s var(--ease)}
+.card-hero:hover{transform:scale(1.012)}
+.card-hero:hover .h-img{transform:scale(1.08);filter:saturate(1.6) contrast(1.08)}
+.h-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:saturate(1.2) contrast(1.05);transition:transform .9s var(--ease),filter .9s var(--ease)}
+.h-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,10,1) 0%,rgba(8,11,10,.72) 30%,rgba(8,11,10,.2) 55%,transparent 78%),linear-gradient(100deg,rgba(8,11,10,.55) 0%,transparent 50%);border-radius:var(--r);z-index:1}
+.card-hero::after{content:'';position:absolute;inset:0;z-index:2;border-radius:var(--r);border:1.5px solid transparent;transition:.4s var(--ease);pointer-events:none}
+.card-hero:hover::after{border-color:rgba(0,230,118,.5)}
+.h-body{position:absolute;bottom:0;left:0;right:0;padding:32px 36px;z-index:3}
+.h-kicker{display:flex;align-items:center;gap:10px;margin-bottom:13px}
+.hl{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:3px 10px;border-radius:4px}
+.hl-red{background:var(--red);color:#fff}
+.hl-green{background:var(--green);color:#000}
+.hl-cyan{background:var(--cyan);color:#000}
+.hl-amber{background:var(--amber);color:#000}
+.hl-violet{background:var(--violet);color:#000}
+.live-pill{display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:1px;color:var(--green)}
+.live-pip{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pip 1.7s ease-in-out infinite}
+@keyframes pip{0%,100%{opacity:1}50%{opacity:.1}}
+.h-title{font-family:'Anton',sans-serif;font-size:clamp(1.9rem,3.6vw,3rem);line-height:.95;letter-spacing:1px;margin-bottom:13px;text-shadow:0 2px 18px rgba(0,0,0,.85)}
+.h-desc{font-size:13.5px;color:rgba(232,245,233,.6);line-height:1.55;margin-bottom:18px;max-width:500px}
+.h-stats{display:flex;flex-wrap:wrap;gap:7px}
+.hst{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:var(--green);background:rgba(0,230,118,.09);border:1px solid rgba(0,230,118,.2);padding:4px 12px;border-radius:20px;letter-spacing:.3px}
 
-/* ══════════════════════════
-   CARDS BASE
-══════════════════════════ */
-.card{
-  position:relative;border-radius:var(--r);overflow:hidden;
-  background:var(--glass);
-  border:1px solid var(--border);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  transition:.45s var(--ease);
-  display:flex;flex-direction:column;
-}
-.card:hover{
-  transform:translateY(-5px) scale(1.015);
-  border-color:rgba(0,255,136,.35);
-  box-shadow:0 28px 60px rgba(0,0,0,.75),0 0 24px rgba(0,255,136,.18);
-}
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:12px}
+.s-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:96px 1fr;cursor:pointer;transition:.3s var(--ease)}
+.s-card:hover{border-color:rgba(0,230,118,.3);background:rgba(255,255,255,.05);transform:translateX(4px)}
+.s-card:hover .s-img{transform:scale(1.07)}
+.s-thumb{width:96px;overflow:hidden;flex-shrink:0}
+.s-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s var(--ease);filter:saturate(1.15)}
+.s-body{padding:11px 12px;display:flex;flex-direction:column;gap:5px}
+.s-body h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;line-height:1.25;text-transform:uppercase;letter-spacing:.1px}
+.s-meta{font-size:11px;color:var(--muted);line-height:1.45}
 
-/* IMG WRAP */
-.img-wrap{overflow:hidden;width:100%;position:relative}
-.img-wrap img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center top;
-  display:block;
-  filter:saturate(1.3) contrast(1.08);
-  transition:transform .7s var(--ease), filter .7s var(--ease);
-}
-.card:hover .img-wrap img{
-  transform:scale(1.09);
-  filter:saturate(1.65) contrast(1.1);
-}
+/* SEC HEADER */
+.sec-hdr{display:flex;align-items:center;gap:16px;margin:36px 0 18px}
+.sec-ttl{font-family:'Oswald',sans-serif;font-weight:700;font-size:11px;letter-spacing:3.5px;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.sec-line{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent)}
 
-/* ══════════════════════════
-   HERO GRID
-══════════════════════════ */
-.hero-grid{
-  display:grid;
-  grid-template-columns:1fr 390px;
-  gap:26px;
-  margin:36px 0;
-  position:relative;z-index:1;
-}
+/* SCORES GRID */
+.scores-g{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.sc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:13px 14px;display:flex;flex-direction:column;gap:6px;transition:.3s var(--ease)}
+.sc:hover{border-color:rgba(0,230,118,.28);transform:translateY(-2px)}
+.sc.live{border-color:rgba(255,23,68,.35);background:rgba(255,23,68,.03)}
+.sc-comp{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:1.8px;color:var(--cyan);text-transform:uppercase}
+.sc-comp.lc{color:var(--live)}
+.sc-match{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.sc-team{font-family:'Oswald',sans-serif;font-weight:600;font-size:12.5px;text-transform:uppercase;flex:1;line-height:1.15}
+.sc-team.r{text-align:right}
+.sc-score{font-family:'Anton',sans-serif;font-size:22px;color:var(--green);text-shadow:0 0 10px rgba(0,230,118,.4);flex-shrink:0;letter-spacing:1px;white-space:nowrap}
+.sc-score .sep{color:var(--muted);font-family:'Oswald',sans-serif;font-size:13px;font-weight:300;margin:0 2px}
+.sc-info{font-size:9.5px;color:var(--muted);letter-spacing:.2px}
+.live-tag{display:inline-flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--live);font-weight:600}
+.live-tag-dot{width:5px;height:5px;border-radius:50%;background:var(--live);animation:pip 1.3s ease-in-out infinite}
 
-/* ── HERO CARD ── */
-.card-hero{height:575px;cursor:pointer;}
-.card-hero .img-wrap{
-  position:absolute;inset:0;height:100%;
-  clip-path:inset(0 0 0 0 round var(--r));
-}
-/* multi-layer gradient overlay */
-.card-hero::after{
-  content:'';
-  position:absolute;inset:0;z-index:1;
-  background:
-    linear-gradient(to top,rgba(0,0,0,.97) 0%,rgba(0,0,0,.65) 38%,rgba(0,0,0,.12) 65%,transparent 100%),
-    linear-gradient(to right,rgba(0,0,0,.4) 0%,transparent 60%);
-  border-radius:var(--r);
-}
-.card-hero .info{
-  position:absolute;bottom:0;left:0;width:100%;
-  padding:38px 42px;z-index:2;
-}
+/* 3-COL */
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:44px}
+.m-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:.4s var(--ease)}
+.m-card:hover{border-color:rgba(0,230,118,.32);transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.65),0 0 18px rgba(0,230,118,.1)}
+.m-card:hover .m-img{transform:scale(1.07);filter:saturate(1.5)}
+.m-thumb{height:190px;position:relative;overflow:hidden}
+.m-img{width:100%;height:100%;object-fit:cover;filter:saturate(1.15) contrast(1.04);transition:transform .7s var(--ease),filter .7s var(--ease)}
+.m-chip{position:absolute;top:10px;right:10px;z-index:2;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;padding:3px 8px;border-radius:4px;letter-spacing:1px;text-transform:uppercase}
+.m-body{padding:15px 16px 18px;display:flex;flex-direction:column;gap:7px}
+.m-body h4{font-family:'Oswald',sans-serif;font-weight:700;font-size:15px;line-height:1.2;text-transform:uppercase;letter-spacing:.2px}
+.m-body p{font-size:12px;color:var(--muted);line-height:1.5}
 
-/* animated neon border on hero hover */
-.card-hero::before{
-  content:'';
-  position:absolute;inset:0;z-index:3;
-  border-radius:var(--r);
-  background:transparent;
-  border:2px solid transparent;
-  transition:.4s var(--ease);
-  pointer-events:none;
-}
-.card-hero:hover::before{
-  border-color:rgba(0,255,136,.4);
-  box-shadow:inset 0 0 40px rgba(0,255,136,.06);
-}
+/* BRASILEIRAO TABLE */
+.br-wrap{margin-bottom:44px;overflow-x:auto}
+.br-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono',monospace;min-width:580px}
+.br-table thead tr{border-bottom:1px solid var(--border)}
+.br-table th{font-size:9px;font-weight:600;letter-spacing:2px;color:var(--muted);text-transform:uppercase;padding:8px 10px;text-align:right}
+.br-table th:first-child,.br-table th:nth-child(2){text-align:left}
+.br-table td{font-size:11.5px;padding:9px 10px;text-align:right;border-bottom:1px solid rgba(255,255,255,.035);color:var(--ink)}
+.br-table td:first-child{text-align:left;font-size:11px;color:var(--muted);width:32px}
+.br-table td:nth-child(2){text-align:left;font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;letter-spacing:.2px;text-transform:uppercase}
+.br-table tbody tr{transition:.2s}
+.br-table tbody tr:hover{background:rgba(255,255,255,.04)}
+.br-table tbody tr.hi td:nth-child(2){color:var(--green)}
+.pts{font-weight:600;color:var(--green)}
+.z{width:3px;border-radius:2px;display:inline-block;height:12px;margin-right:6px;vertical-align:middle}
+.z-l{background:var(--cyan)}.z-s{background:var(--green2)}.z-r{background:var(--red);opacity:.7}
 
-/* ── TAG ROW ── */
-.tag-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+/* NBA BRACKET */
+.nba-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:44px}
+.nba-conf{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px}
+.nba-ttl{font-family:'Oswald',sans-serif;font-weight:700;font-size:11px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.mu{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.035)}
+.mu:last-child{border-bottom:none}
+.mu-teams{flex:1}
+.mu-name{font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.2px;line-height:1.65}
+.mu-name.w{color:var(--green)}.mu-name.lo{color:var(--muted)}
+.mu-score{font-family:'Anton',sans-serif;font-size:18px;color:var(--green);letter-spacing:2px;text-align:right;flex-shrink:0}
+.mu-lbl{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;text-align:right}
+.mu-lbl.lv{color:var(--live)}
+.mu-score.lv{color:var(--live);font-size:14px;letter-spacing:0}
 
-.live-badge{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:800;font-size:11px;letter-spacing:1.5px;
-  color:var(--green);
-  display:inline-flex;align-items:center;gap:5px;
-}
-.live-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 8px var(--green);
-  animation:blink 1.6s ease-in-out infinite;
-}
-@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:44px 24px 34px;text-align:center;position:relative;z-index:1}
+.ft-brand{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:3px;color:var(--green);filter:drop-shadow(0 0 8px rgba(0,230,118,.5));margin-bottom:8px}
+.ft-copy{font-size:12px;color:var(--muted);margin-bottom:18px}
+.ft-links{display:flex;justify-content:center;gap:22px}
+.ft-links a{font-family:'Oswald',sans-serif;font-size:11px;font-weight:400;letter-spacing:.8px;text-transform:uppercase;color:rgba(232,245,233,.28);text-decoration:none;transition:color .2s}
+.ft-links a:hover{color:var(--green)}
 
-.card-hero h1{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(2.1rem,4.5vw,3.5rem);
-  line-height:.93;
-  margin-bottom:14px;
-  text-shadow:0 2px 24px rgba(0,0,0,.9);
-  letter-spacing:1px;
-}
-.subtitle{
-  font-size:15px;color:rgba(240,253,250,.75);
-  line-height:1.5;margin-bottom:18px;max-width:540px;
-}
-.hero-stats{
-  display:flex;align-items:center;gap:8px;
-  flex-wrap:wrap;
-}
-.stat-pill{
-  background:rgba(0,255,136,.1);
-  border:1px solid rgba(0,255,136,.25);
-  color:var(--green);
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:800;font-size:12px;letter-spacing:.5px;
-  padding:4px 12px;border-radius:50px;
-}
+/* ANIMS */
+.up{opacity:0;transform:translateY(24px);animation:upA .65s var(--ease) forwards}
+.d1{animation-delay:.07s}.d2{animation-delay:.15s}.d3{animation-delay:.24s}
+.d4{animation-delay:.35s}.d5{animation-delay:.47s}
+@keyframes upA{to{opacity:1;transform:translateY(0)}}
 
-/* ══════════════════════════
-   SIDEBAR
-══════════════════════════ */
-.sidebar{display:flex;flex-direction:column;gap:16px}
-
-.card-side{
-  display:grid;
-  grid-template-columns:112px 1fr;
-  gap:13px;padding:13px;
-  align-items:start;cursor:pointer;
-}
-.card-side .img-wrap{
-  height:112px;width:112px;
-  border-radius:11px;flex-shrink:0;
-}
-.side-content{padding:2px 0}
-.side-content h3{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:14.5px;font-weight:700;
-  line-height:1.22;text-transform:uppercase;
-  margin:7px 0 5px;
-}
-.side-sub{font-size:11.5px;color:var(--muted);line-height:1.4}
-
-/* ══════════════════════════
-   SECTION TITLE
-══════════════════════════ */
-.section-title{
-  display:flex;align-items:center;gap:14px;
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:12px;font-weight:800;letter-spacing:3.5px;
-  text-transform:uppercase;color:var(--muted);
-  margin:44px 0 20px;
-  position:relative;z-index:1;
-}
-.section-title::after{
-  content:'';flex:1;height:1px;
-  background:linear-gradient(to right,var(--border),transparent);
-}
-
-/* ══════════════════════════
-   MINI CARDS
-══════════════════════════ */
-.bottom-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;margin-bottom:50px;
-  position:relative;z-index:1;
-}
-.card-mini{cursor:pointer}
-.mini-thumb{height:215px;position:relative}
-
-/* floating badge on thumbnail */
-.card-badge{
-  position:absolute;top:12px;right:12px;z-index:2;
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;font-size:10px;letter-spacing:1px;
-  padding:4px 10px;border-radius:6px;
-  background:var(--green);color:#000;
-}
-.card-badge.red{background:var(--red);color:#fff}
-.card-badge.violet{background:var(--violet);color:#fff}
-.card-badge.amber{background:var(--amber);color:#000}
-
-.info-mini{padding:17px 19px 21px;display:flex;flex-direction:column;gap:7px}
-.info-mini h4{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:17px;font-weight:700;
-  line-height:1.2;text-transform:uppercase;
-}
-
-/* ══════════════════════════
-   SCORES SECTION
-══════════════════════════ */
-.scores-section{margin-bottom:80px;position:relative;z-index:1}
-.scores-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-.score-card{
-  background:var(--glass);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:15px 16px;
-  display:flex;flex-direction:column;gap:7px;
-  transition:.35s var(--ease);
-}
-.score-card:hover{
-  border-color:rgba(0,229,255,.3);
-  background:rgba(0,229,255,.04);
-  transform:translateY(-3px);
-}
-.score-comp{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:10px;font-weight:800;letter-spacing:2px;
-  color:var(--cyan);text-transform:uppercase;
-}
-.score-match{
-  display:flex;align-items:center;justify-content:space-between;gap:6px;
-}
-.score-team{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:700;font-size:13px;
-  text-transform:uppercase;flex:1;line-height:1.2;
-}
-.score-team.r{text-align:right}
-.score-num{
-  font-family:'Bebas Neue',sans-serif;font-size:24px;
-  color:var(--green);white-space:nowrap;flex-shrink:0;
-  text-shadow:0 0 14px rgba(0,255,136,.5);
-}
-.score-num s{
-  font-style:normal;text-decoration:none;
-  color:var(--muted);font-size:17px;margin:0 3px;
-}
-.score-venue{font-size:10.5px;color:var(--muted);letter-spacing:.2px}
-
-/* ══════════════════════════
-   TAGS
-══════════════════════════ */
-.tag{
-  background:var(--green);color:#000;
-  padding:5px 12px;border-radius:6px;
-  font-weight:900;
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:11px;letter-spacing:.5px;
-  text-transform:uppercase;
-  display:inline-block;
-  box-shadow:inset 0 -2px 0 rgba(0,0,0,.12);
-}
-.t-red   {background:var(--red);color:#fff}
-.t-cyan  {background:var(--cyan);color:#000}
-.t-violet{background:var(--violet);color:#fff}
-.t-amber {background:var(--amber);color:#000}
-
-/* ══════════════════════════
-   FOOTER
-══════════════════════════ */
-footer{
-  background:#000;
-  border-top:1px solid var(--border);
-  background-image:radial-gradient(ellipse 70% 60% at 50% 0%,var(--jungle),transparent 70%);
-  padding:70px 24px 50px;
-  text-align:center;
-  position:relative;z-index:1;
-}
-.footer-inner{max-width:600px;margin:0 auto}
-.footer-brand{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:32px;color:var(--green);
-  letter-spacing:5px;
-  filter:drop-shadow(0 0 10px var(--green));
-  margin-bottom:10px;
-}
-.footer-copy{font-size:13px;color:var(--muted);margin-bottom:24px}
-.footer-links{display:flex;justify-content:center;gap:24px}
-.footer-links a{
-  font-size:11px;font-weight:600;
-  color:rgba(240,253,250,.35);
-  text-decoration:none;text-transform:uppercase;letter-spacing:.5px;
-  transition:color .3s;
-}
-.footer-links a:hover{color:var(--green)}
-
-/* ══════════════════════════
-   PAGE LOAD ANIMATIONS
-══════════════════════════ */
-.fade-up{
-  opacity:0;transform:translateY(22px);
-  animation:fadeUp .65s var(--ease) forwards;
-}
-.fade-up.d1{animation-delay:.1s}
-.fade-up.d2{animation-delay:.2s}
-.fade-up.d3{animation-delay:.3s}
-.fade-up.d4{animation-delay:.45s}
-.fade-up.d5{animation-delay:.6s}
-
-@keyframes fadeUp{
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* ══════════════════════════
-   RESPONSIVE
-══════════════════════════ */
-@media(max-width:1024px){
-  .hero-grid{grid-template-columns:1fr}
-  .card-hero{height:430px}
-  .scores-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:768px){
-  .top-nav{display:none}
-  .bottom-grid{grid-template-columns:1fr}
-  .card-side{grid-template-columns:90px 1fr}
-  .card-side .img-wrap{height:90px;width:90px}
-  .scores-grid{grid-template-columns:1fr}
-  .card-hero{height:370px}
-  .card-hero .info{padding:24px}
-}
-
+/* RESPONSIVE */
+@media(max-width:1024px){.hero-area{grid-template-columns:1fr}.card-hero{height:440px}.scores-g{grid-template-columns:repeat(2,1fr)}.nba-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav{display:none}.three-col{grid-template-columns:1fr}.card-hero{height:380px}.h-body{padding:22px 22px}}
+@media(max-width:480px){.scores-g{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 
-<!-- ══ HEADER ══ -->
-<header class="top-bar">
-  <div class="container top-bar-inner">
-    <a href="#" class="logo">UOL <em>ESPORTE</em></a>
-    <nav class="top-nav">
+<div class="ambient" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="W hdr-inner">
+    <a href="#" class="logo">
+      UOL<span class="logo-sep"></span><span class="logo-esp">ESPORTE</span>
+    </a>
+    <nav class="nav">
       <a href="#">Futebol</a>
-      <a href="#" class="hl">Copa 2026</a>
+      <a href="#" class="on">Copa 2026</a>
       <a href="#">Brasileirão</a>
       <a href="#">Libertadores</a>
+      <a href="#">Champions</a>
       <a href="#">NBA</a>
       <a href="#">F1</a>
       <a href="#">Tênis</a>
     </nav>
-    <button class="btn-assine">ASSINE</button>
+    <button class="btn-ass">Assinar</button>
   </div>
 </header>
 
-<!-- ══ TICKER ══ -->
-<div class="ticker-bar">
-  <div class="ticker-inner">
-    <div class="ticker-track">
-      <!-- duplicado para loop contínuo -->
-      <span class="ticker-item">⚽ VINI JR. FAZ 2 E REAL MADRID ADIA TÍTULO DO BARCELONA — EL CLÁSICO DECIDE LALIGA</span>
-      <span class="ticker-item">🇧🇷 BRASILEIRÃO 14ª RODADA: ATL-MG 3×1 CRUZEIRO · PALMEIRAS 1×1 SANTOS</span>
-      <span class="ticker-item">🏀 PLAYOFFS NBA: THUNDER × LAKERS ABRE SEMIFINAL DO OESTE AMANHÃ ÀS 21H30</span>
-      <span class="ticker-item">🏎️ GP MIAMI: CORRIDA PODE TER HORÁRIO ALTERADO POR RISCO DE TEMPESTADE</span>
-      <span class="ticker-item">⚽ COPA 2026: MENOS DE 40 DIAS PARA A ABERTURA EM DALLAS, TX</span>
-      <span class="ticker-item">🏀 CADE CUNNINGHAM: 45 PONTOS NO JOGO 7 — PISTONS VIRAM HISTÓRICO 3×1 CONTRA O MAGIC</span>
-      <!-- REPEAT for seamless loop -->
-      <span class="ticker-item">⚽ VINI JR. FAZ 2 E REAL MADRID ADIA TÍTULO DO BARCELONA — EL CLÁSICO DECIDE LALIGA</span>
-      <span class="ticker-item">🇧🇷 BRASILEIRÃO 14ª RODADA: ATL-MG 3×1 CRUZEIRO · PALMEIRAS 1×1 SANTOS</span>
-      <span class="ticker-item">🏀 PLAYOFFS NBA: THUNDER × LAKERS ABRE SEMIFINAL DO OESTE AMANHÃ ÀS 21H30</span>
-      <span class="ticker-item">🏎️ GP MIAMI: CORRIDA PODE TER HORÁRIO ALTERADO POR RISCO DE TEMPESTADE</span>
-      <span class="ticker-item">⚽ COPA 2026: MENOS DE 40 DIAS PARA A ABERTURA EM DALLAS, TX</span>
-      <span class="ticker-item">🏀 CADE CUNNINGHAM: 45 PONTOS NO JOGO 7 — PISTONS VIRAM HISTÓRICO 3×1 CONTRA O MAGIC</span>
-    </div>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="t-item">⚽ ARSENAL NA FINAL DA CHAMPIONS! Saka decide · Gunners vencem Atlético 1–0 (2–1 global)</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">🌿 LIBERTADORES AO VIVO · Sporting Cristal × Palmeiras · 19h · Lima</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">🏀 NBA PLAYOFFS · Knicks esmagam 76ers 137–98 · Brunson com 35 pts</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">🏀 WEMBANYAMA: 12 BLOQUEIOS num único jogo — recorde histórico dos playoffs</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">⚽ BRASILEIRÃO 14ª ROD · Palmeiras líder 33 pts · Remo bate Botafogo · Vitória goleia Coritiba 4–1</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">🏎️ F1 MIAMI · Norris na pole · corrida domingo 18h (Brasília)</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">⚽ COPA 2026 · 36 dias para abertura em Dallas · 48 seleções</span>
+    <span class="t-dot">·</span>
+    <!-- LOOP -->
+    <span class="t-item">⚽ ARSENAL NA FINAL DA CHAMPIONS! Saka decide · Gunners vencem Atlético 1–0 (2–1 global)</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">🌿 LIBERTADORES AO VIVO · Sporting Cristal × Palmeiras · 19h · Lima</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">🏀 NBA PLAYOFFS · Knicks esmagam 76ers 137–98 · Brunson com 35 pts</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">🏀 WEMBANYAMA: 12 BLOQUEIOS num único jogo — recorde histórico dos playoffs</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">⚽ BRASILEIRÃO 14ª ROD · Palmeiras líder 33 pts · Remo bate Botafogo · Vitória goleia Coritiba 4–1</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">🏎️ F1 MIAMI · Norris na pole · corrida domingo 18h (Brasília)</span>
+    <span class="t-dot">·</span>
+    <span class="t-item">⚽ COPA 2026 · 36 dias para abertura em Dallas · 48 seleções</span>
+    <span class="t-dot">·</span>
   </div>
 </div>
 
-<!-- ══ MAIN ══ -->
-<main class="container">
+<main>
+<div class="W">
 
-  <!-- HERO GRID -->
-  <div class="hero-grid">
-
-    <!-- CARD HERO -->
-    <article class="card card-hero fade-up d1">
-      <div class="img-wrap">
-        <img
-          src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=960&q=85"
-          alt="Vinicius Junior"
-          loading="eager"
-        >
+<!-- ══ HERO ══ -->
+<section class="hero-area">
+  <article class="card-hero up d1">
+    <img class="h-img" src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1100&q=85" alt="Arsenal Champions League" loading="eager">
+    <div class="h-grad"></div>
+    <div class="h-body">
+      <div class="h-kicker">
+        <span class="hl hl-red">⚡ Champions · Semif. · 2ª Mão</span>
+        <span class="live-pill"><span class="live-pip"></span>Encerrado · Londres</span>
       </div>
-      <div class="info">
-        <div class="tag-row">
-          <span class="tag t-red">🔥 LALIGA — 34ª RODADA</span>
-          <span class="live-badge"><span class="live-dot"></span>ENCERRADO HOJE</span>
-        </div>
-        <h1>VINI JR. FAZ 2 E SALVA O REAL: Barcelona terá de esperar o Clásico para levantar a taça</h1>
-        <p class="subtitle">Gols nos 55' e 66' com assistência de Bellingham e uma jogada individual brilhante. La Liga decide no Camp Nou no próximo domingo.</p>
-        <div class="hero-stats">
-          <span class="stat-pill">⚽ 21 gols na temporada</span>
-          <span class="stat-pill">🎯 10 assistências</span>
-          <span class="stat-pill">🏆 50 jogos disputados</span>
-        </div>
+      <h1 class="h-title">ARSENAL NA FINAL!<br>Saka decide e os Gunners voltam ao topo da Europa após 20 anos</h1>
+      <p class="h-desc">No Emirates Stadium, Bukayo Saka abriu o placar aos 44' com cruzamento de Gyökeres. O Atlético reclamou de pênalti não marcado na 2ª etapa. Arsenal aguarda PSG ou Bayern na final em Budapeste, dia 30/05.</p>
+      <div class="h-stats">
+        <span class="hst">2–1 no global</span>
+        <span class="hst">⚽ Saka 44'</span>
+        <span class="hst">Final · 30/05 · Budapeste</span>
+        <span class="hst">PSG × Bayern define hoje</span>
       </div>
-    </article>
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-      <article class="card card-side fade-up d2">
-        <div class="img-wrap side-thumb">
-          <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=300&q=80" alt="Atlético MG">
-        </div>
-        <div class="side-content">
-          <span class="tag t-cyan">BRASILEIRÃO</span>
-          <h3>Galo domina! Atlético-MG 3×1 Cruzeiro no Mineirão em noite histórica de Minda.</h3>
-          <p class="side-sub">Minda abriu, Maycon ampliou de pênalti e Cassierra fechou de cabeça. Kaio Jorge descontou nos acréscimos.</p>
-        </div>
-      </article>
-
-      <article class="card card-side fade-up d3">
-        <div class="img-wrap side-thumb">
-          <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=300&q=80" alt="NBA Playoffs">
-        </div>
-        <div class="side-content">
-          <span class="tag t-violet">NBA PLAYOFFS</span>
-          <h3>Semifinais abertas: Thunder x Lakers e Pistons x Cavs começam amanhã.</h3>
-          <p class="side-sub">OKC recebe LeBron às 21h30 (Brasília). Cade Cunningham vem de 45 pts no Jogo 7 contra o Magic.</p>
-        </div>
-      </article>
-
-      <article class="card card-side fade-up d4">
-        <div class="img-wrap side-thumb">
-          <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=300&q=80" alt="Palmeiras x Santos">
-        </div>
-        <div class="side-content">
-          <span class="tag">BRASILEIRÃO</span>
-          <h3>Palmeiras segue líder: empata com Santos e alcança 9 jogos sem derrota no Brasileiro.</h3>
-          <p class="side-sub">Rollheiser abriu para o Peixe; Flaco López empatou no 2°T. Gol da virada de Allan anulado pelo VAR.</p>
-        </div>
-      </article>
-
-    </aside>
-  </div>
-
-  <!-- EM DESTAQUE -->
-  <h2 class="section-title"><span>EM DESTAQUE</span></h2>
-
-  <section class="bottom-grid">
-
-    <article class="card card-mini fade-up d3">
-      <div class="img-wrap mini-thumb">
-        <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?auto=format&fit=crop&w=560&q=80" alt="F1 Miami">
-        <span class="card-badge amber">GP MIAMI</span>
-      </div>
-      <div class="info-mini">
-        <span class="tag t-amber">FÓRMULA 1</span>
-        <h4>GP de Miami: risco de tempestade ameaça horário. Ferrari, McLaren e Mercedes chegam com pacotes de atualização.</h4>
-      </div>
-    </article>
-
-    <article class="card card-mini fade-up d4">
-      <div class="img-wrap mini-thumb">
-        <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=560&q=80" alt="Cade Cunningham NBA">
-        <span class="card-badge violet">JOGO 7</span>
-      </div>
-      <div class="info-mini">
-        <span class="tag t-violet">NBA</span>
-        <h4>Heróico! Pistons viram série histórica 3×1 contra Magic. Cunningham anota 45, 32 e 32 nos três últimos jogos.</h4>
-      </div>
-    </article>
-
-    <article class="card card-mini fade-up d5">
-      <div class="img-wrap mini-thumb">
-        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=560&q=80" alt="Copa 2026">
-        <span class="card-badge red">-40 DIAS</span>
-      </div>
-      <div class="info-mini">
-        <span class="tag t-red">COPA 2026</span>
-        <h4>Contagem regressiva: abertura em Dallas com 48 seleções. Brasil treina o esquema de Ancelotti nos EUA.</h4>
-      </div>
-    </article>
-
-  </section>
-
-  <!-- RESULTADOS -->
-  <h2 class="section-title"><span>📊 RESULTADOS — 04/05/2026</span></h2>
-  <section class="scores-section">
-    <div class="scores-grid">
-
-      <div class="score-card">
-        <span class="score-comp">LaLiga · 34ª Rodada</span>
-        <div class="score-match">
-          <span class="score-team">Espanyol</span>
-          <span class="score-num">0<s>×</s>2</span>
-          <span class="score-team r">Real Madrid</span>
-        </div>
-        <span class="score-venue">RCDE Stadium · Encerrado</span>
-      </div>
-
-      <div class="score-card">
-        <span class="score-comp">Brasileirão · 14ª Rodada</span>
-        <div class="score-match">
-          <span class="score-team">Cruzeiro</span>
-          <span class="score-num">1<s>×</s>3</span>
-          <span class="score-team r">Atlético-MG</span>
-        </div>
-        <span class="score-venue">Mineirão, BH · Encerrado</span>
-      </div>
-
-      <div class="score-card">
-        <span class="score-comp">Brasileirão · 14ª Rodada</span>
-        <div class="score-match">
-          <span class="score-team">Palmeiras</span>
-          <span class="score-num">1<s>×</s>1</span>
-          <span class="score-team r">Santos</span>
-        </div>
-        <span class="score-venue">Allianz Parque, SP · Encerrado</span>
-      </div>
-
-      <div class="score-card">
-        <span class="score-comp">Brasileirão · 14ª Rodada</span>
-        <div class="score-match">
-          <span class="score-team">Botafogo</span>
-          <span class="score-num">1<s>×</s>2</span>
-          <span class="score-team r">Remo</span>
-        </div>
-        <span class="score-venue">Nilton Santos, RJ · Encerrado</span>
-      </div>
-
     </div>
-  </section>
+  </article>
 
+  <aside class="sidebar">
+    <article class="s-card up d2">
+      <div class="s-thumb"><img class="s-img" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=200&q=80" alt="Palmeiras Libertadores"></div>
+      <div class="s-body">
+        <span class="hl hl-green" style="font-size:8.5px">🌿 Libertadores · AO VIVO 19h</span>
+        <h3>Sporting Cristal × Palmeiras — briga pela liderança do Grupo F em Lima</h3>
+        <p class="s-meta">Cristal lidera com 6 pts, Verdão tem 5. Abel escala Flaco López. Paramount+</p>
+      </div>
+    </article>
+    <article class="s-card up d3">
+      <div class="s-thumb"><img class="s-img" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=200&q=80" alt="NBA Knicks Brunson"></div>
+      <div class="s-body">
+        <span class="hl hl-violet" style="font-size:8.5px">🏀 NBA · Semis Leste · J1</span>
+        <h3>Knicks varrem 76ers por 137–98. Brunson com 35 pts. Embiid sentado no 3º período.</h3>
+        <p class="s-meta">NYK lidera série 1–0. Jogo 2 quarta às 21h.</p>
+      </div>
+    </article>
+    <article class="s-card up d4">
+      <div class="s-thumb"><img class="s-img" src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=200&q=80" alt="Wembanyama blocks"></div>
+      <div class="s-body">
+        <span class="hl hl-amber" style="font-size:8.5px">🏀 NBA · RECORDE HISTÓRICO</span>
+        <h3>Wembanyama: 12 bloqueios num único jogo — nenhum jogador havia feito isso desde Andrew Bynum em 2012</h3>
+        <p class="s-meta">Spurs perdem 102–104 para Wolves. Wemby iguala Hakeem (90) e Eaton (85).</p>
+      </div>
+    </article>
+    <article class="s-card up d5">
+      <div class="s-thumb"><img class="s-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=200&q=80" alt="Copa do Mundo 2026"></div>
+      <div class="s-body">
+        <span class="hl hl-red" style="font-size:8.5px">⚽ Copa 2026 · Dallas · -36 dias</span>
+        <h3>Ancelotti confirma Vini Jr e Endrick titulares. Brasil estreia vs EUA dia 15/06.</h3>
+        <p class="s-meta">Grupo H: Brasil, Espanha, Marrocos e EUA. 48 seleções, 3 países-sede.</p>
+      </div>
+    </article>
+  </aside>
+</section>
+
+<!-- ══ PLACARES HOJE ══ -->
+<div class="sec-hdr up d1">
+  <span class="sec-ttl">🔴 Ao vivo e mais tarde · 05/05/2026</span>
+  <div class="sec-line"></div>
+</div>
+<section class="scores-g up d2">
+  <div class="sc live">
+    <span class="sc-comp lc">🔴 Libertadores · Grupo F</span>
+    <div class="sc-match">
+      <span class="sc-team">Sp. Cristal</span>
+      <span class="sc-score" style="font-size:12px"><span class="live-tag"><span class="live-tag-dot"></span>AO VIVO</span></span>
+      <span class="sc-team r">Palmeiras</span>
+    </div>
+    <span class="sc-info">Villanueva, Lima · 19h (Brasília)</span>
+  </div>
+  <div class="sc live">
+    <span class="sc-comp lc">🔴 NBA · Semis Leste · J1</span>
+    <div class="sc-match">
+      <span class="sc-team">Detroit</span>
+      <span class="sc-score" style="font-size:12px"><span class="live-tag"><span class="live-tag-dot"></span>HOJE 20H</span></span>
+      <span class="sc-team r">Cleveland</span>
+    </div>
+    <span class="sc-info">Little Caesars Arena · Peacock</span>
+  </div>
+  <div class="sc live">
+    <span class="sc-comp lc">🔴 NBA · Semis Oeste · J1</span>
+    <div class="sc-match">
+      <span class="sc-team">OKC Thunder</span>
+      <span class="sc-score" style="font-size:12px"><span class="live-tag"><span class="live-tag-dot"></span>HOJE 21:30H</span></span>
+      <span class="sc-team r">LA Lakers</span>
+    </div>
+    <span class="sc-info">Paycom Center · OKC fav. 87.8%</span>
+  </div>
+  <div class="sc">
+    <span class="sc-comp">Champions League · Semif. 2ª mão</span>
+    <div class="sc-match">
+      <span class="sc-team">PSG</span>
+      <span class="sc-score" style="font-size:12px;color:var(--amber)">HOJE 21H</span>
+      <span class="sc-team r">Bayern</span>
+    </div>
+    <span class="sc-info">Parc des Princes · Final em jogo</span>
+  </div>
+</section>
+
+<!-- ══ RESULTADOS ONTEM ══ -->
+<div class="sec-hdr up d1">
+  <span class="sec-ttl">📊 Resultados · 04/05/2026</span>
+  <div class="sec-line"></div>
+</div>
+<section class="scores-g up d2">
+  <div class="sc">
+    <span class="sc-comp">Brasileirão · 14ª Rodada</span>
+    <div class="sc-match">
+      <span class="sc-team">Botafogo</span>
+      <span class="sc-score">1<span class="sep">×</span>2</span>
+      <span class="sc-team r">Remo</span>
+    </div>
+    <span class="sc-info">Nilton Santos, RJ</span>
+  </div>
+  <div class="sc">
+    <span class="sc-comp">Brasileirão · 14ª Rodada</span>
+    <div class="sc-match">
+      <span class="sc-team">Vitória</span>
+      <span class="sc-score">4<span class="sep">×</span>1</span>
+      <span class="sc-team r">Coritiba</span>
+    </div>
+    <span class="sc-info">Barradão, Salvador</span>
+  </div>
+  <div class="sc">
+    <span class="sc-comp">Brasileirão · 14ª Rodada</span>
+    <div class="sc-match">
+      <span class="sc-team">Cruzeiro</span>
+      <span class="sc-score">1<span class="sep">×</span>3</span>
+      <span class="sc-team r">Atlético-MG</span>
+    </div>
+    <span class="sc-info">Mineirão, Belo Horizonte</span>
+  </div>
+  <div class="sc">
+    <span class="sc-comp">Brasileirão · 14ª Rodada</span>
+    <div class="sc-match">
+      <span class="sc-team">Flamengo</span>
+      <span class="sc-score">2<span class="sep">×</span>2</span>
+      <span class="sc-team r">Vasco</span>
+    </div>
+    <span class="sc-info">Maracanã, Rio de Janeiro</span>
+  </div>
+  <div class="sc">
+    <span class="sc-comp">Brasileirão · 14ª Rodada</span>
+    <div class="sc-match">
+      <span class="sc-team">Palmeiras</span>
+      <span class="sc-score">1<span class="sep">×</span>1</span>
+      <span class="sc-team r">Santos</span>
+    </div>
+    <span class="sc-info">Allianz Parque, SP</span>
+  </div>
+  <div class="sc">
+    <span class="sc-comp">Brasileirão · 14ª Rodada</span>
+    <div class="sc-match">
+      <span class="sc-team">Mirassol</span>
+      <span class="sc-score">2<span class="sep">×</span>1</span>
+      <span class="sc-team r">Corinthians</span>
+    </div>
+    <span class="sc-info">Estádio Municipal, Mirassol</span>
+  </div>
+  <div class="sc">
+    <span class="sc-comp">NBA · Semis Leste · J1</span>
+    <div class="sc-match">
+      <span class="sc-team">NY Knicks</span>
+      <span class="sc-score">137<span class="sep">×</span>98</span>
+      <span class="sc-team r">76ers</span>
+    </div>
+    <span class="sc-info">Madison Sq. Garden · NYK 1–0</span>
+  </div>
+  <div class="sc">
+    <span class="sc-comp">NBA · Semis Oeste · J1</span>
+    <div class="sc-match">
+      <span class="sc-team">SA Spurs</span>
+      <span class="sc-score">102<span class="sep">×</span>104</span>
+      <span class="sc-team r">Minnesota</span>
+    </div>
+    <span class="sc-info">Frost Bank Center · MIN 1–0</span>
+  </div>
+</section>
+
+<!-- ══ EM DESTAQUE ══ -->
+<div class="sec-hdr up d1">
+  <span class="sec-ttl">Em Destaque</span>
+  <div class="sec-line"></div>
+</div>
+<section class="three-col up d2">
+  <article class="m-card">
+    <div class="m-thumb">
+      <img class="m-img" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80" alt="Wembanyama bloqueios NBA">
+      <span class="m-chip hl-violet">🏀 RECORDE</span>
+    </div>
+    <div class="m-body">
+      <span class="hl hl-violet" style="font-size:8.5px">NBA PLAYOFFS 2026</span>
+      <h4>Wembanyama: 12 bloqueios num único jogo — recorde histórico dos playoffs da NBA</h4>
+      <p>Spurs perdem por 104–102, mas Wemby domina a garrafão. Igualou Hakeem Olajuwon (1990) e Mark Eaton (1985). Minnesota lidera a série 1–0.</p>
+    </div>
+  </article>
+  <article class="m-card">
+    <div class="m-thumb">
+      <img class="m-img" src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?auto=format&fit=crop&w=600&q=80" alt="F1 GP Miami Norris pole">
+      <span class="m-chip hl-amber">🏎️ GP MIAMI</span>
+    </div>
+    <div class="m-body">
+      <span class="hl hl-amber" style="font-size:8.5px">FÓRMULA 1 · MIAMI</span>
+      <h4>Norris na pole em Miami com pacote novo da McLaren. Ferrari e Mercedes chegam ameaçando virar o campeonato</h4>
+      <p>Treino apurou McLaren e Ferrari lado a lado. Corrida no domingo às 18h (Brasília). Verstappen larga em 4º após penalidade no Q3.</p>
+    </div>
+  </article>
+  <article class="m-card">
+    <div class="m-thumb">
+      <img class="m-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" alt="Copa do Mundo 2026 Brasil Dallas">
+      <span class="m-chip hl-red">⚽ -36 DIAS</span>
+    </div>
+    <div class="m-body">
+      <span class="hl hl-red" style="font-size:8.5px">COPA 2026 · DALLAS</span>
+      <h4>Brasil de Ancelotti confirma Vini Jr e Endrick titulares. Estreia contra os EUA dia 15/06 no AT&T Stadium</h4>
+      <p>48 seleções · Grupo H: Brasil, Espanha, Marrocos e EUA. Abertura oficial em Dallas no dia 11 de junho de 2026.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ══ BRASILEIRAO TABLE ══ -->
+<div class="sec-hdr up d1">
+  <span class="sec-ttl">🇧🇷 Classificação · Brasileirão Série A 2026 · após 14ª rodada</span>
+  <div class="sec-line"></div>
+</div>
+<div class="br-wrap up d2">
+  <table class="br-table">
+    <thead>
+      <tr>
+        <th>#</th><th>Time</th><th>P</th><th>J</th><th>V</th><th>E</th><th>D</th><th>GP</th><th>GC</th><th>SG</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="hi"><td><span class="z z-l"></span>1</td><td>Palmeiras</td><td class="pts">33</td><td>14</td><td>10</td><td>3</td><td>1</td><td>24</td><td>11</td><td>+13</td></tr>
+      <tr><td><span class="z z-l"></span>2</td><td>Flamengo</td><td class="pts">27</td><td>13</td><td>8</td><td>3</td><td>2</td><td>26</td><td>12</td><td>+14</td></tr>
+      <tr><td><span class="z z-l"></span>3</td><td>Fluminense</td><td class="pts">26</td><td>14</td><td>8</td><td>2</td><td>4</td><td>23</td><td>18</td><td>+5</td></tr>
+      <tr><td><span class="z z-s"></span>4</td><td>São Paulo</td><td class="pts">25</td><td>14</td><td>7</td><td>4</td><td>3</td><td>22</td><td>16</td><td>+6</td></tr>
+      <tr><td><span class="z z-s"></span>5</td><td>Atlético-MG</td><td class="pts">24</td><td>14</td><td>7</td><td>3</td><td>4</td><td>27</td><td>18</td><td>+9</td></tr>
+      <tr><td><span class="z z-s"></span>6</td><td>Bahia</td><td class="pts">22</td><td>14</td><td>6</td><td>4</td><td>4</td><td>20</td><td>19</td><td>+1</td></tr>
+      <tr><td><span class="z z-s"></span>7</td><td>Internacional</td><td class="pts">21</td><td>14</td><td>6</td><td>3</td><td>5</td><td>19</td><td>17</td><td>+2</td></tr>
+      <tr><td>8</td><td>Bragantino</td><td class="pts">20</td><td>14</td><td>5</td><td>5</td><td>4</td><td>18</td><td>17</td><td>+1</td></tr>
+      <tr><td>9</td><td>Vitória</td><td class="pts">19</td><td>14</td><td>5</td><td>4</td><td>5</td><td>21</td><td>21</td><td>0</td></tr>
+      <tr><td>10</td><td>Grêmio</td><td class="pts">17</td><td>14</td><td>4</td><td>5</td><td>5</td><td>16</td><td>18</td><td>−2</td></tr>
+      <tr><td>15</td><td style="color:var(--amber)">Botafogo</td><td class="pts" style="color:var(--muted)">13</td><td>14</td><td>3</td><td>4</td><td>7</td><td>15</td><td>21</td><td>−6</td></tr>
+      <tr><td><span class="z z-r"></span>17</td><td style="color:var(--red)">Corinthians</td><td class="pts" style="color:var(--muted)">11</td><td>14</td><td>3</td><td>2</td><td>9</td><td>12</td><td>25</td><td>−13</td></tr>
+      <tr><td><span class="z z-r"></span>19</td><td style="color:var(--red)">Coritiba</td><td class="pts" style="color:var(--muted)">8</td><td>14</td><td>2</td><td>2</td><td>10</td><td>11</td><td>28</td><td>−17</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:10px;color:var(--muted);margin-top:10px;font-family:'IBM Plex Mono',monospace">
+    🟦 Libertadores &nbsp;·&nbsp; 🟩 Sul-Americana &nbsp;·&nbsp; 🟥 Zona de Rebaixamento &nbsp;·&nbsp; Fonte: CBF / Exame 04/05/2026
+  </p>
+</div>
+
+<!-- ══ NBA PLAYOFFS BRACKET ══ -->
+<div class="sec-hdr up d1">
+  <span class="sec-ttl">🏀 NBA Playoffs 2026 · Semifinais — Jogo 1</span>
+  <div class="sec-line"></div>
+</div>
+<section class="nba-grid up d2">
+  <div class="nba-conf">
+    <div class="nba-ttl">Conferência Leste</div>
+    <div class="mu">
+      <div class="mu-teams">
+        <div class="mu-name w">New York Knicks (#3)</div>
+        <div class="mu-name lo">Philadelphia 76ers (#7)</div>
+      </div>
+      <div>
+        <div class="mu-score">1–0</div>
+        <div class="mu-lbl">Knicks lideram</div>
+      </div>
+    </div>
+    <div class="mu">
+      <div class="mu-teams">
+        <div class="mu-name">Detroit Pistons (#1)</div>
+        <div class="mu-name">Cleveland Cavaliers (#4)</div>
+      </div>
+      <div>
+        <div class="mu-score lv">HOJE</div>
+        <div class="mu-lbl lv">20h · Little Caesars</div>
+      </div>
+    </div>
+  </div>
+  <div class="nba-conf">
+    <div class="nba-ttl">Conferência Oeste</div>
+    <div class="mu">
+      <div class="mu-teams">
+        <div class="mu-name w">Minnesota Timberwolves (#6)</div>
+        <div class="mu-name lo">San Antonio Spurs (#2)</div>
+      </div>
+      <div>
+        <div class="mu-score">1–0</div>
+        <div class="mu-lbl">Wolves lideram</div>
+      </div>
+    </div>
+    <div class="mu">
+      <div class="mu-teams">
+        <div class="mu-name">OKC Thunder (#1) ⚡ Campeão def.</div>
+        <div class="mu-name">Los Angeles Lakers (#4)</div>
+      </div>
+      <div>
+        <div class="mu-score lv">HOJE</div>
+        <div class="mu-lbl lv">21:30h · Paycom Center</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /W -->
 </main>
 
-<!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-inner">
-    <p class="footer-brand">UOL ESPORTE TROPICAL © 2026</p>
-    <p class="footer-copy">Cobertura especial para a Copa do Mundo 2026 — EUA, México e Canadá.</p>
-    <div class="footer-links">
-      <a href="#">Privacidade</a>
-      <a href="#">Anuncie</a>
-      <a href="#">Fale Conosco</a>
-      <a href="#">Newsletter</a>
-    </div>
+  <p class="ft-brand">UOL ESPORTE · 2026</p>
+  <p class="ft-copy">Cobertura especial Copa do Mundo 2026 — EUA, México e Canadá &nbsp;·&nbsp; Terça, 05 de maio de 2026</p>
+  <div class="ft-links">
+    <a href="#">Privacidade</a>
+    <a href="#">Anuncie</a>
+    <a href="#">Fale Conosco</a>
+    <a href="#">Newsletter</a>
   </div>
 </footer>
 
